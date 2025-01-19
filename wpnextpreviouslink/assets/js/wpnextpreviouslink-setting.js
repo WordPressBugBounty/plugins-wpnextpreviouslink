@@ -1,9 +1,7 @@
 ;(function ($) {
     'use strict';
-    //var wpnextpreviouslink_vars = wpnextpreviouslink_settings_vars;
 
     $(document).ready(function () {
-
         var wpnextpreviouslink_awn_options = {
             labels: {
                 tip          : wpnextpreviouslink_settings_vars.awn_options.tip,
@@ -19,8 +17,6 @@
         };
 
         $('.setting-color-picker-wrapper').each(function (index, element) {
-            //console.log(element);
-
             var $color_field_wrap = $(element);
             //console.log($color_field);
             var $color_field      = $color_field_wrap.find('.setting-color-picker');
@@ -119,7 +115,7 @@
         $('.selecttwo-select-wrapper').each(function (index, element) {
             var $element = $(element);
 
-            $('.selecttwo-select').select2({
+            $element.find('.selecttwo-select').select2({
                 placeholder: wpnextpreviouslink_settings_vars.please_select,
                 allowClear : false,
                 theme      : 'default select2-container--cbx'
@@ -152,8 +148,6 @@
                 return;
             }
 
-            //console.log('trigger happened', $tab_id);
-
             $tab_id = $tab_id.replace('#', '');
 
             $setting_nav.find('a').removeClass('active');
@@ -183,7 +177,6 @@
                         security: wpnextpreviouslink_settings_vars.nonce
                     },
                     success: function (data, textStatus, XMLHttpRequest) {
-
                         $('#wpnextpreviouslink_resetinfo_wrap').html(data.html);
                     }//end of success
                 });//end of ajax
@@ -209,6 +202,11 @@
 
             setting_nav_change($tab_id);
         });
+
+        //set default
+        if(activetab === null){
+            activetab = $('.setting-tabs-nav').find('a.active').attr('href');
+        }
 
         if(activetab !== null){
             var activetab_whash = activetab.replace('#', '');
@@ -315,14 +313,36 @@
             });
         });
 
-        //var adjustment_photo;
-      /*  $('.multicheck_fields_sortable').sortable({
-            vertical         : true,
-            handle           : '.multicheck_field_handle',
-            containerSelector: '.multicheck_fields',
-            itemSelector     : '.multicheck_field',
-            placeholder      : 'multicheck_field_placeholder'
-        });*/
+
+        $('.checkbox_fields_check_actions').on(
+            'click',
+            ".checkbox_fields_check_action_call",
+            function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                $this
+                    .parent()
+                    .next('.checkbox_fields')
+                    .find(':checkbox')
+                    .prop('checked', true);
+            }
+        );
+
+        $('.checkbox_fields_check_actions').on(
+            'click',
+            '.checkbox_fields_check_action_ucall',
+            function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                $this
+                    .parent()
+                    .next('.checkbox_fields')
+                    .find(':checkbox')
+                    .prop('checked', false);
+            }
+        );
 
         $('.checkbox_fields_sortable').sortable({
             vertical: true,
@@ -331,15 +351,6 @@
             itemSelector: '.checkbox_field',
             placeholder: 'checkbox_field_placeholder'
         });
-
-        /*$('.global_setting_group').on('click', '.checkbox', function () {
-            var mainParent = $(this).closest('.checkbox-toggle-btn');
-            if ($(mainParent).find('input.checkbox').is(':checked')) {
-                $(mainParent).addClass('active');
-            } else {
-                $(mainParent).removeClass('active');
-            }
-        });*/
 
         //one click save setting for the current tab
         $('#save_settings').on('click', function (e) {
@@ -352,6 +363,28 @@
             $('#' + $tab_id).find('.submit_setting').trigger('click');
         });
 
+        $('#wpnextpreviouslink_resetinfo_wrap').on(
+            'click',
+            ".wpnextpreviouslink_setting_options_check_action_call",
+            function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                $("#wpnextpreviouslink_resetinfo_wrap").find(":checkbox").prop("checked", true);
+            }
+        );
+
+        $("#wpnextpreviouslink_resetinfo_wrap").on(
+            'click',
+            ".wpnextpreviouslink_setting_options_check_action_ucall",
+            function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                $("#wpnextpreviouslink_resetinfo_wrap").find(":checkbox").prop("checked", false);
+            }
+        );
+
         $('#setting_info_trig').on('click', function (e) {
             e.preventDefault();
 
@@ -359,40 +392,10 @@
         });
 
         //reset click
-        /*$('#reset_data_trigger').on('click', function (e) {
-            e.preventDefault();
-
-            var $this = $(this);
-
-            var notifier = new AWN(wpnextpreviouslink_awn_options);
-
-            var onCancel = () => {
-            };
-
-            var onOk = () => {
-                $this.hide();
-                window.location.href = $this.attr('href');
-            };
-
-            notifier.confirm(
-                wpnextpreviouslink_settings_vars.are_you_sure_delete_desc,
-                onOk,
-                onCancel,
-                {
-                    labels: {
-                        confirm: wpnextpreviouslink_settings_vars.are_you_sure_global
-                    }
-                }
-            );
-        });//end click #reset_data_trigger*/
-
-        //reset click
         $('#reset_data_trigger').on('click', function (e) {
             e.preventDefault();
 
             var $this = $(this);
-            //var $busy = parseInt($this.data('busy'));
-
             var notifier = new AWN(wpnextpreviouslink_awn_options);
 
             var onCancel = () => {};
@@ -404,16 +407,10 @@
 
                 $this.hide();
 
-               /* let  $reset_tables = $('.reset_tables:checkbox:checked').map(function() {
-                    return this.value;
-                }).get();*/
-
                 let  $reset_options = $('.reset_options:checkbox:checked').map(function() {
                     return this.value;
                 }).get();
 
-                //console.log($reset_tables);
-                //console.log($reset_options);
 
                 //send ajax request to reset plugin
                 $.ajax({

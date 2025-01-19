@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-28 10:34+0000\n"
+"POT-Creation-Date: 2025-01-19 11:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -21,75 +21,87 @@ msgid "%s does not exist."
 msgstr ""
 
 #. %s. Pro addon external link
-#: admin/class-wpnextpreviouslink-admin.php:527
+#: includes/WPNextPreviousLinkAdmin.php:548
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%s\">CBX Next Previous Article Pro Addon</a> has "
 "extended features and settings. try it  - Codeboxr Team"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:924
+#. translators:translators: %s: plugin setting url for licence
+#: includes/WPNextPreviousLinkAdmin.php:580
+#, php-format
+msgid ""
+"<strong>Note:</strong> CBX Next Previous Article Pro Addon is custom plugin. "
+"This plugin can not be auto update from dashboard/plugin manager. For manual "
+"update please check <a target=\"_blank\" href=\"%1$s\">documentation</a>. "
+"<strong style=\"color: red;\">It seems this plugin's current version is "
+"older than %2$s . To get the latest pro addon features, this plugin needs to "
+"upgrade to %2$s or later.</strong>"
+msgstr ""
+
+#: includes/class-wpnextpreviouslink-setting.php:906
 msgid "Add New"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:316
+#: includes/WPNextPreviousLinkHelper.php:309
 msgid "Archive Display Settings"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:219
+#: includes/WPNextPreviousLinkAdmin.php:219
 msgid "Are you sure to remove all steps?"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:218
+#: includes/WPNextPreviousLinkAdmin.php:218
 msgid "Are you sure to remove this step?"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:222
+#: includes/WPNextPreviousLinkAdmin.php:222
 msgid "Are you sure?"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:478
+#: includes/WPNextPreviousLinkHelper.php:464
 msgid "Arrow Preview"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:469
+#: includes/WPNextPreviousLinkHelper.php:454
 msgid "Arrow Style"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:470
+#: includes/WPNextPreviousLinkHelper.php:455
 msgid "Arrow style of the next prev link."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:462
+#: includes/WPNextPreviousLinkHelper.php:447
 msgid "Arrow Style Settings"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:247
+#: includes/WPNextPreviousLinkAdmin.php:247
 msgid "Attention"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:267
+#: includes/WPNextPreviousLinkHelper.php:260
 msgid "Basic Settings"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:612
+#: includes/WPNextPreviousLinkHelper.php:580
 msgid "Blue"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:125
+#: includes/WPNextPreviousLinkHelper.php:122
 msgid "Built in post types"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:231
-#: admin/class-wpnextpreviouslink-admin.php:252
+#: includes/WPNextPreviousLinkAdmin.php:231
+#: includes/WPNextPreviousLinkAdmin.php:252
 msgid "Cancel"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:236
+#: includes/WPNextPreviousLinkAdmin.php:236
 msgid "cancel and close"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:318
+#: includes/WPNextPreviousLinkAdmin.php:318
 msgid "CBX Next Previous"
 msgstr ""
 
@@ -97,17 +109,17 @@ msgstr ""
 msgid "CBX Next Previous Article"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:520
+#: includes/WPNextPreviousLinkAdmin.php:541
 msgid ""
 "CBX Next Previous Article Pro Addon V2.0.4 or later required to work with "
 "the current version core plugin  CBX Next Previous Article."
 msgstr ""
 
-#: templates/admin/support.php:192
+#: templates/admin/support.php:191
 msgid "CBX Next Previous Plugin Details"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:317
+#: includes/WPNextPreviousLinkAdmin.php:317
 msgid "CBX Next Previous Setting"
 msgstr ""
 
@@ -116,55 +128,57 @@ msgid "CBX Next Previous: Support & Docs"
 msgstr ""
 
 #. 1. Plugin setting url 2. Documentation url
-#: admin/class-wpnextpreviouslink-admin.php:477
-#: admin/class-wpnextpreviouslink-admin.php:494
+#: includes/WPNextPreviousLinkAdmin.php:496
+#: includes/WPNextPreviousLinkAdmin.php:514
 #, php-format
 msgid ""
 "Check <a href=\"%1$s\">Plugin Setting</a> | <a target=\"_blank\" "
 "href=\"%2$s\" target=\"_blank\">Documentation</a>"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:577
-msgid ""
-"Check how to <a style=\"color:#6648fe !important; font-weight: bold;\" "
-"href=\"%$1s\"><strong>Update manually</strong></a> , download latest version "
-"from <a style=\"color:#6648fe !important; font-weight: bold;\" href=\"%$2s\">"
-"<strong>My Account</strong></a> section of Codeboxr.com"
+#: includes/class-wpnextpreviouslink-setting.php:487
+#: includes/WPNextPreviousLinkHelper.php:617
+msgid "Check All"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:389
+#: includes/WPNextPreviousLinkHelper.php:382
 msgid "Check more option about this feature"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:812
+#: includes/class-wpnextpreviouslink-setting.php:774
 msgid "Choose Color"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:783
+#: includes/class-wpnextpreviouslink-setting.php:745
 msgid "Choose File"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:611
+#: includes/WPNextPreviousLinkHelper.php:579
 msgid "Classic"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:232
+#: includes/WPNextPreviousLinkAdmin.php:232
 msgid "Clear"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:237
+#: includes/WPNextPreviousLinkAdmin.php:237
 msgid "clear and close"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:215
+#: includes/WPNextPreviousLinkAdmin.php:215
 msgid "Click to copy"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:225
+#: includes/class-wpnextpreviouslink-setting.php:292
 msgid "Click to show hide"
 msgstr ""
 
-#: templates/admin/support.php:274
+#: includes/class-wpnextpreviouslink-setting.php:61
+#: includes/WPNextPreviousLink.php:88
+msgid "Cloning is forbidden."
+msgstr ""
+
+#: templates/admin/support.php:273
 msgid "Codeboxr News Updates"
 msgstr ""
 
@@ -172,99 +186,99 @@ msgstr ""
 msgid "Codeboxr Team"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:238
+#: includes/WPNextPreviousLinkAdmin.php:238
 msgid "color input field"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:226
+#: includes/WPNextPreviousLinkAdmin.php:226
 msgid "color picker dialog"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:239
+#: includes/WPNextPreviousLinkAdmin.php:239
 msgid "color selection area"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:228
+#: includes/WPNextPreviousLinkAdmin.php:228
 msgid "color swatch"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:250
+#: includes/WPNextPreviousLinkAdmin.php:250
 msgid "Confirmation"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:214
+#: includes/WPNextPreviousLinkAdmin.php:214
 msgid "Copied"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:216
+#: includes/WPNextPreviousLinkAdmin.php:216
 msgid "Copied to clipboard"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:213
+#: includes/WPNextPreviousLinkAdmin.php:213
 msgid "Copy"
 msgstr ""
 
-#: templates/admin/support.php:80
+#: templates/admin/support.php:82
 msgid "Core Plugin Changelog"
 msgstr ""
 
-#: templates/admin/support.php:220
+#: templates/admin/support.php:219
 msgid "Core Plugin Support"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:282
+#: includes/WPNextPreviousLinkHelper.php:275
 msgid "CSS style z index value"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:613
+#: includes/WPNextPreviousLinkHelper.php:581
 msgid "Dark"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:695
+#: includes/WPNextPreviousLinkHelper.php:663
 msgid "Date(default in wordpress core)"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:560
+#: includes/WPNextPreviousLinkHelper.php:548
 msgid ""
 "Delete Global Config data and custom table created by this plugin on "
 "uninstall."
 msgstr ""
 
-#: templates/admin/support.php:202
+#: templates/admin/support.php:201
 msgid "Documentation & User Guide"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:531
+#: includes/WPNextPreviousLinkHelper.php:519
 msgid "Enable/Disable . Track next prev display views."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:538
+#: includes/WPNextPreviousLinkHelper.php:526
 msgid "Enable/Disable. Track next prev link clicks."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:545
+#: includes/WPNextPreviousLinkHelper.php:533
 msgid ""
 "Enable/Disable. Turn it on to indicate that the event hit will not be used "
 "in bounce-rate calculation."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:524
+#: includes/WPNextPreviousLinkHelper.php:512
 msgid ""
 "Enable/Disable. You must have google analytics added to your website to use "
 "this feature."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:248
+#: includes/WPNextPreviousLinkAdmin.php:248
 msgid "Error"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:648
+#: includes/WPNextPreviousLinkHelper.php:616
 msgid ""
 "Following option values created by this plugin(including addon) from "
 "WordPress core option table"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:419
+#: includes/WPNextPreviousLinkAdmin.php:419
 msgid "Free Support"
 msgstr ""
 
@@ -276,19 +290,19 @@ msgstr ""
 msgid "Global Settings"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:166
+#: includes/WPNextPreviousLinkHelper.php:163
 msgid "Google Analytics"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:523
+#: includes/WPNextPreviousLinkHelper.php:511
 msgid "Google Enalytics Trackings"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:614
+#: includes/WPNextPreviousLinkHelper.php:582
 msgid "Green"
 msgstr ""
 
-#: templates/admin/support.php:181
+#: templates/admin/support.php:180
 msgid "Help & Supports"
 msgstr ""
 
@@ -300,415 +314,416 @@ msgstr ""
 msgid "https://codeboxr.com/product/show-next-previous-article-for-wordpress"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:240
+#: includes/WPNextPreviousLinkAdmin.php:240
 msgid "hue selection slider"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:245
+#: includes/WPNextPreviousLinkAdmin.php:245
 msgid "Info"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:306
+#: includes/WPNextPreviousLinkHelper.php:299
 msgid "Link open in same window or new window"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:249
+#: includes/WPNextPreviousLinkAdmin.php:249
 msgid "Loading"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:224
+#: includes/WPNextPreviousLinkHelper.php:218
 msgid "Loading ..."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:389
+#: includes/WPNextPreviousLinkHelper.php:382
 msgid "Navigate by Category/taxonomy or not. Default \"No\"."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:158
+#: includes/WPNextPreviousLinkHelper.php:155
 msgid "Navigate By Taxonomy"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:388
+#: includes/WPNextPreviousLinkHelper.php:381
 msgid "Navigate by Taxonomy"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:512
+#: includes/WPNextPreviousLinkHelper.php:500
 msgid "Navigation order by post type"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:311
+#: includes/WPNextPreviousLinkHelper.php:304
 msgid "New Window/Tab"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:239
+#: includes/WPNextPreviousLinkHelper.php:232
 msgid "Next"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:506
+#: includes/WPNextPreviousLinkHelper.php:494
 msgid "Next prev order by each post type"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:454
+#: includes/WPNextPreviousLinkHelper.php:439
 msgid "Next Prev Style Type"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:481
+#: includes/WPNextPreviousLinkHelper.php:468
 msgid "Next Preview Image(Width: 32px, Height: auto)"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:593
+#: includes/WPNextPreviousLinkAdmin.php:605
 msgid "Next Previous Link reset setting html loaded successfully"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:618
+#: includes/WPNextPreviousLinkAdmin.php:629
 msgid "Next Previous Link setting reset scheduled successfully"
 msgstr ""
 
-#: templates/admin/settings.php:27
+#: templates/admin/settings.php:35
 msgid "Next Previous: Global Settings"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:221
-#: includes/class-wpnextpreviouslink-helper.php:327
-#: includes/class-wpnextpreviouslink-helper.php:338
-#: includes/class-wpnextpreviouslink-helper.php:349
-#: includes/class-wpnextpreviouslink-helper.php:360
-#: includes/class-wpnextpreviouslink-helper.php:371
-#: includes/class-wpnextpreviouslink-helper.php:382
-#: includes/class-wpnextpreviouslink-helper.php:393
-#: includes/class-wpnextpreviouslink-helper.php:404
-#: includes/class-wpnextpreviouslink-helper.php:448
-#: includes/class-wpnextpreviouslink-helper.php:564
+#: includes/WPNextPreviousLinkAdmin.php:221
+#: includes/WPNextPreviousLinkHelper.php:320
+#: includes/WPNextPreviousLinkHelper.php:331
+#: includes/WPNextPreviousLinkHelper.php:342
+#: includes/WPNextPreviousLinkHelper.php:353
+#: includes/WPNextPreviousLinkHelper.php:364
+#: includes/WPNextPreviousLinkHelper.php:375
+#: includes/WPNextPreviousLinkHelper.php:386
+#: includes/WPNextPreviousLinkHelper.php:397
+#: includes/WPNextPreviousLinkHelper.php:433
+#: includes/WPNextPreviousLinkHelper.php:552
 msgid "No"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:251
+#: includes/WPNextPreviousLinkAdmin.php:251
 msgid "OK"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:559
+#: includes/WPNextPreviousLinkHelper.php:547
 msgid "On Uninstall delete plugin data"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:223
+#: includes/WPNextPreviousLinkAdmin.php:223
 msgid "Once you delete, it's gone forever. You can not revert it back."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:305
+#: includes/WPNextPreviousLinkHelper.php:298
 msgid "Open Link Target"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:655
-#: includes/class-wpnextpreviouslink-helper.php:677
+#: includes/WPNextPreviousLinkHelper.php:623
+#: includes/WPNextPreviousLinkHelper.php:645
 msgid "Option ID"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:654
-#: includes/class-wpnextpreviouslink-helper.php:676
+#: includes/WPNextPreviousLinkHelper.php:622
+#: includes/WPNextPreviousLinkHelper.php:644
 msgid "Option Name"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:615
+#: includes/WPNextPreviousLinkHelper.php:583
 msgid "Orange"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:162
+#: includes/WPNextPreviousLinkHelper.php:159
 msgid "Order By Post Type"
 msgstr ""
 
-#: templates/admin/support.php:237
+#: templates/admin/support.php:236
 msgid "Other WordPress Plugins"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:270
+#: includes/WPNextPreviousLinkAdmin.php:270
 msgid "Please check the captcha."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:260
+#: includes/WPNextPreviousLinkAdmin.php:260
 msgid "Please enter a valid date ( ISO )."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:259
+#: includes/WPNextPreviousLinkAdmin.php:259
 msgid "Please enter a valid date."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:257
+#: includes/WPNextPreviousLinkAdmin.php:257
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:261
+#: includes/WPNextPreviousLinkAdmin.php:261
 msgid "Please enter a valid number."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:258
+#: includes/WPNextPreviousLinkAdmin.php:258
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:266
+#: includes/WPNextPreviousLinkAdmin.php:266
 msgid "Please enter a value between {0} and {1} characters long."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:267
+#: includes/WPNextPreviousLinkAdmin.php:267
 msgid "Please enter a value between {0} and {1}."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:269
+#: includes/WPNextPreviousLinkAdmin.php:269
 msgid "Please enter a value greater than or equal to {0}."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:268
+#: includes/WPNextPreviousLinkAdmin.php:268
 msgid "Please enter a value less than or equal to {0}."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:265
+#: includes/WPNextPreviousLinkAdmin.php:265
 msgid "Please enter at least {0} characters."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:264
+#: includes/WPNextPreviousLinkAdmin.php:264
 msgid "Please enter no more than {0} characters."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:262
+#: includes/WPNextPreviousLinkAdmin.php:262
 msgid "Please enter only digits."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:263
+#: includes/WPNextPreviousLinkAdmin.php:263
 msgid "Please enter the same value again."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:256
+#: includes/WPNextPreviousLinkAdmin.php:256
 msgid "Please fix this field."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:560
+#: includes/WPNextPreviousLinkHelper.php:548
 msgid ""
 "Please note that this process can not be undone and it is recommended to "
 "keep full database backup before doing this."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:274
-#: includes/class-wpnextpreviouslink-setting.php:679
+#: includes/class-wpnextpreviouslink-setting.php:587
+#: includes/class-wpnextpreviouslink-setting.php:648
+#: includes/WPNextPreviousLinkAdmin.php:274
 msgid "Please Select"
 msgstr ""
 
 #. %s. Pro addon external link
-#: admin/class-wpnextpreviouslink-admin.php:522
+#: includes/WPNextPreviousLinkAdmin.php:543
 #, php-format
 msgid ""
 "Please update <a target=\"_blank\" href=\"%s\">CBX Next Previous Article Pro "
 "Addon</a> to version 2.0.4 or later  - Codeboxr Team"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:154
+#: includes/WPNextPreviousLinkHelper.php:151
 msgid "Plugin Options"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:416
-#: includes/class-wpnextpreviouslink-helper.php:417
+#: includes/WPNextPreviousLinkHelper.php:409
+#: includes/WPNextPreviousLinkHelper.php:410
 msgid "Post Type Selection"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:490
+#: includes/WPNextPreviousLinkHelper.php:478
 msgid "Post type specific taxonomy navigation"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:496
+#: includes/WPNextPreviousLinkHelper.php:484
 msgid "Post Type Taxonomy Bindings"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:298
+#: includes/WPNextPreviousLinkHelper.php:291
 msgid "Post/page/custom post type ids as comma to skip display the next prev"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:480
+#: includes/WPNextPreviousLinkHelper.php:467
 msgid "Prev Preview Image(Width: 32px, Height: auto)"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:544
+#: includes/WPNextPreviousLinkHelper.php:532
 msgid "Prevent Bounce Rate"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:238
+#: includes/WPNextPreviousLinkHelper.php:231
 msgid "Previous"
 msgstr ""
 
-#: templates/admin/support.php:141
+#: templates/admin/support.php:137
 msgid "Pro Addon Changelog"
 msgstr ""
 
-#: templates/admin/support.php:230
+#: templates/admin/support.php:229
 msgid "Pro Addon Support"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:424
+#: includes/WPNextPreviousLinkAdmin.php:424
 msgid "Pro Support"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:616
+#: includes/WPNextPreviousLinkHelper.php:584
 msgid "Red"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:202
+#: includes/WPNextPreviousLinkAdmin.php:202
 msgid "Request failed, please reload the page."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:570
+#: includes/WPNextPreviousLinkHelper.php:558
 msgid "Reset all data"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:571
+#: includes/WPNextPreviousLinkHelper.php:559
 msgid "Reset Data"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:571
+#: includes/WPNextPreviousLinkHelper.php:559
 msgid "Reset option values and all tables created by this plugin"
 msgstr ""
 
-#: templates/admin/support.php:210
+#: templates/admin/support.php:209
 msgid "Review & Rate CBX Next Previous Article"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:420
+#: includes/WPNextPreviousLinkAdmin.php:420
 msgid "Reviews"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:310
+#: includes/WPNextPreviousLinkHelper.php:303
 msgid "Same Window"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:230
+#: includes/WPNextPreviousLinkAdmin.php:230
 msgid "Save"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:235
+#: includes/WPNextPreviousLinkAdmin.php:235
 msgid "save and close"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:1288
-#: templates/admin/settings.php:34
+#: includes/class-wpnextpreviouslink-setting.php:1281
+#: templates/admin/settings.php:42
 msgid "Save Settings"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:277
+#: includes/WPNextPreviousLinkAdmin.php:277
 msgid "Select Media"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:1009
+#: includes/class-wpnextpreviouslink-setting.php:971
 msgid "Select Taxonomy"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:241
+#: includes/WPNextPreviousLinkAdmin.php:241
 msgid "selection slider"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:442
+#: includes/WPNextPreviousLinkAdmin.php:442
 msgid "Settings"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:443
+#: includes/WPNextPreviousLinkHelper.php:428
 msgid "Show Both arrow"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:399
+#: includes/WPNextPreviousLinkHelper.php:392
 msgid "Show Both arrow in archive"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:400
+#: includes/WPNextPreviousLinkHelper.php:393
 msgid "Show both left and right for any archive mode for arrow style"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:444
+#: includes/WPNextPreviousLinkHelper.php:429
 msgid "Show both left and right for any details mode for arrow style"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:333
+#: includes/WPNextPreviousLinkHelper.php:326
 msgid "Show in Archive"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:334
+#: includes/WPNextPreviousLinkHelper.php:327
 msgid ""
 "Show in Archive View(Category, Tag, Author, Date etc) or not. Default \"Yes\""
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:366
+#: includes/WPNextPreviousLinkHelper.php:359
 msgid "Show in Author View"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:367
+#: includes/WPNextPreviousLinkHelper.php:360
 msgid ""
 "Show in Author View or not. Default \"Yes\".  If hidden for archive view "
 "then hidden for author view."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:344
+#: includes/WPNextPreviousLinkHelper.php:337
 msgid "Show in Category View"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:345
+#: includes/WPNextPreviousLinkHelper.php:338
 msgid ""
 "Show in Category View or not. Default \"Yes\". If hidden for archive view "
 "then hidden for category view."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:377
+#: includes/WPNextPreviousLinkHelper.php:370
 msgid "Show in Date View"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:378
+#: includes/WPNextPreviousLinkHelper.php:371
 msgid ""
 "Show in Date View or not. Default \"Yes\".  If hidden for archive view then "
 "hidden for date view."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:322
+#: includes/WPNextPreviousLinkHelper.php:315
 msgid "Show in Home page"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:323
+#: includes/WPNextPreviousLinkHelper.php:316
 msgid "Show in home page or not. Default \"Yes\""
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:355
+#: includes/WPNextPreviousLinkHelper.php:348
 msgid "Show in Tag View"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:356
+#: includes/WPNextPreviousLinkHelper.php:349
 msgid ""
 "Show in Tag View or not. Default \"Yes\".  If hidden for archive view then "
 "hidden for tag view."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:426
+#: includes/WPNextPreviousLinkHelper.php:419
 msgid "Show Post"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:427
+#: includes/WPNextPreviousLinkHelper.php:420
 msgid "Show which post to be appeared"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:410
+#: includes/WPNextPreviousLinkHelper.php:403
 msgid "Single Article Display Settings"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:297
+#: includes/WPNextPreviousLinkHelper.php:290
 msgid "Skip Posts"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:597
-#: admin/class-wpnextpreviouslink-admin.php:623
+#: includes/WPNextPreviousLinkAdmin.php:609
+#: includes/WPNextPreviousLinkAdmin.php:634
 msgid "Sorry, you don't have enough permission"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:246
+#: includes/WPNextPreviousLinkAdmin.php:246
 msgid "Success"
 msgstr ""
 
-#: templates/admin/settings.php:33
+#: templates/admin/settings.php:41
 msgid "Support & Docs"
 msgstr ""
 
 #. %s. Core plugin's version
-#: admin/class-wpnextpreviouslink-admin.php:475
+#: includes/WPNextPreviousLinkAdmin.php:494
 #, php-format
 msgid ""
 "Thanks for installing/deactivating <strong>CBX Next Previous Article</strong>"
@@ -716,74 +731,84 @@ msgid ""
 msgstr ""
 
 #. %s. Core plugin's version
-#: admin/class-wpnextpreviouslink-admin.php:492
+#: includes/WPNextPreviousLinkAdmin.php:512
 #, php-format
 msgid ""
 "Thanks for upgrading <strong>CBX Next Previous Article</strong> V%s , enjoy "
 "the new features and bug fixes - Codeboxr Team"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:255
+#: includes/WPNextPreviousLinkAdmin.php:255
 msgid "This field is required."
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:244
+#: includes/WPNextPreviousLinkAdmin.php:244
 msgid "Tip"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:1262
+#: includes/class-wpnextpreviouslink-setting.php:1256
 msgid "Toggle All Sections"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:227
+#: includes/WPNextPreviousLinkAdmin.php:227
 msgid "toggle color picker dialog"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:170
+#: includes/WPNextPreviousLinkHelper.php:167
 msgid "Tools"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:553
+#: includes/WPNextPreviousLinkHelper.php:541
 msgid "Tools Settings"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:537
+#: includes/WPNextPreviousLinkHelper.php:525
 msgid "Track Clicks"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:530
+#: includes/WPNextPreviousLinkHelper.php:518
 msgid "Track Views"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:426
+#: includes/WPNextPreviousLinkAdmin.php:426
 msgid "Try Pro Addon"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:455
+#: includes/WPNextPreviousLinkHelper.php:440
 msgid "Type of the image or content for next prev style"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:276
+#: includes/class-wpnextpreviouslink-setting.php:487
+#: includes/WPNextPreviousLinkHelper.php:617
+msgid "Uncheck All"
+msgstr ""
+
+#: includes/class-wpnextpreviouslink-setting.php:70
+#: includes/WPNextPreviousLink.php:97
+msgid "Unserializing instances of this class is forbidden."
+msgstr ""
+
+#: includes/WPNextPreviousLinkAdmin.php:276
 msgid "Upload"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:229
+#: includes/WPNextPreviousLinkAdmin.php:229
 msgid "use previous color"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:273
+#: includes/WPNextPreviousLinkHelper.php:266
 msgid "Vertical Position"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:274
+#: includes/WPNextPreviousLinkHelper.php:267
 msgid "Vertical position of arrow or thumb"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:289
+#: includes/WPNextPreviousLinkHelper.php:282
 msgid "Vertical Position Type"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:290
+#: includes/WPNextPreviousLinkHelper.php:283
 msgid "Vertical position type px or %"
 msgstr ""
 
@@ -791,20 +816,20 @@ msgstr ""
 msgid "WordPress Next Previous Article/Link"
 msgstr ""
 
-#: admin/class-wpnextpreviouslink-admin.php:220
-#: includes/class-wpnextpreviouslink-helper.php:328
-#: includes/class-wpnextpreviouslink-helper.php:339
-#: includes/class-wpnextpreviouslink-helper.php:350
-#: includes/class-wpnextpreviouslink-helper.php:361
-#: includes/class-wpnextpreviouslink-helper.php:372
-#: includes/class-wpnextpreviouslink-helper.php:383
-#: includes/class-wpnextpreviouslink-helper.php:394
-#: includes/class-wpnextpreviouslink-helper.php:405
-#: includes/class-wpnextpreviouslink-helper.php:449
-#: includes/class-wpnextpreviouslink-helper.php:563
+#: includes/WPNextPreviousLinkAdmin.php:220
+#: includes/WPNextPreviousLinkHelper.php:321
+#: includes/WPNextPreviousLinkHelper.php:332
+#: includes/WPNextPreviousLinkHelper.php:343
+#: includes/WPNextPreviousLinkHelper.php:354
+#: includes/WPNextPreviousLinkHelper.php:365
+#: includes/WPNextPreviousLinkHelper.php:376
+#: includes/WPNextPreviousLinkHelper.php:387
+#: includes/WPNextPreviousLinkHelper.php:398
+#: includes/WPNextPreviousLinkHelper.php:434
+#: includes/WPNextPreviousLinkHelper.php:551
 msgid "Yes"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-helper.php:281
+#: includes/WPNextPreviousLinkHelper.php:274
 msgid "Z Index"
 msgstr ""

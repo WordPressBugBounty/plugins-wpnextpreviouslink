@@ -1,8 +1,12 @@
 <?php
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+
 /**
- * weDevs Settings API wrapper class
- *
- * Codeboxr.team changed code as needed
+ * weDevs Settings API wrapper class(Modified by codeboxr.com team)
  *
  * @version 1.1
  *
@@ -12,8 +16,8 @@
  *
  */
 if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
-	class WPNextPreviousLink_Settings_API {
 
+	class WPNextPreviousLink_Settings_API {
 		/**
 		 * settings sections array
 		 *
@@ -28,18 +32,53 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 */
 		private $settings_fields = [];
 
+		/**
+		 * Singleton instance
+		 *
+		 * @var object
+		 */
+		private static $_instance;
+
+		/**
+		 * Returns class's instance
+		 *
+		 * @return object|self
+		 */
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
+
+			return self::$_instance;
+		}//end method instance
+
+		/**
+		 * Cloning is forbidden.
+		 *
+		 * @since 2.1
+		 */
+		public function __clone() {
+			wc_doing_it_wrong( __FUNCTION__, esc_html__( 'Cloning is forbidden.', 'wpnextpreviouslink' ), '2.1' );
+		}//end method clone
+
+		/**
+		 * Unserializing instances of this class is forbidden.
+		 *
+		 * @since 2.1
+		 */
+		public function __wakeup() {
+			wc_doing_it_wrong( __FUNCTION__, esc_html__( 'Unserializing instances of this class is forbidden.', 'wpnextpreviouslink' ), '2.1' );
+		}//end method wakeup
 
 		public function __construct() {
 
-		}
+		}//end constructor
 
 
 		/**
 		 * Set settings sections
 		 *
-		 * @param $sections
-		 *
-		 * @return $this
+		 * @param  array  $sections  setting sections array
 		 */
 		function set_sections( $sections ) {
 			$this->settings_sections = $sections;
@@ -50,48 +89,51 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Add a single section
 		 *
-		 * @param $section
-		 *
-		 * @return $this
+		 * @param  array  $section
 		 */
 		function add_section( $section ) {
 			$this->settings_sections[] = $section;
 
 			return $this;
-		}
+		}//end method set_sections
 
 		/**
 		 * Set settings fields
 		 *
-		 * @param $fields
-		 *
-		 * @return $this
+		 * @param  array  $fields  settings fields array
 		 */
 		function set_fields( $fields ) {
 			$this->settings_fields = $fields;
 
 			return $this;
-		}
+		}//end method set_sections
 
 		function add_field( $section, $field ) {
 			$defaults = [
 				'name'  => '',
 				'label' => '',
 				'desc'  => '',
-				'type'  => 'text',
+				'type'  => 'text'
 			];
 
 			$arg                                 = wp_parse_args( $field, $defaults );
 			$this->settings_fields[ $section ][] = $arg;
 
 			return $this;
-		}//end add_field
+		}//end method set_sections
 
+		/**
+		 * Initialize and registers the settings sections and fileds to WordPress
+		 *
+		 * Usually this should be called at `admin_init` hook.
+		 *
+		 * This function gets the initiated settings sections and fields. Then
+		 * registers them to WordPress and ready for use.
+		 */
 
 		function admin_init() {
 			//register settings sections
 			foreach ( $this->settings_sections as $section ) {
-
 				if ( false == get_option( $section['id'] ) ) {
 					$section_default_value = $this->getDefaultValueBySection( $section['id'] );
 					add_option( $section['id'], $section_default_value );
@@ -103,7 +145,8 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 				if ( isset( $section['desc'] ) && ! empty( $section['desc'] ) ) {
 					$section['desc'] = '<div class="inside">' . $section['desc'] . '</div>';
 					$callback        = function () use ( $section ) {
-						echo str_replace( '"', '\"', $section['desc'] );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo str_replace( '"', '\"', $section['desc'] );
 					};
 				} elseif ( isset( $section['callback'] ) ) {
 					$callback = $section['callback'];
@@ -121,14 +164,17 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 					$name     = $option['name'];
 					$type     = isset( $option['type'] ) ? $option['type'] : 'text';
 					$label    = isset( $option['label'] ) ? $option['label'] : '';
-					$callback = isset( $option['callback'] ) ? $option['callback'] : [ $this, 'callback_' . $type ];
+					$callback = isset( $option['callback'] ) ? $option['callback'] : [
+						$this,
+						'callback_' . $type
+					];
 
 					$label_for = $this->settings_clean_label_for( "{$section}_{$option['name']}" );
 
 					$args = [
 						'id'                => $option['name'],
 						'class'             => isset( $option['class'] ) ? $option['class'] : $name,
-						'label_for'         => $label_for,
+						'label_for'         => $args['label_for'] = "{$section}[{$option['name']}]",
 						'desc'              => isset( $option['desc'] ) ? $option['desc'] : '',
 						'name'              => $label,
 						'section'           => $section,
@@ -141,13 +187,14 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 						'sanitize_callback' => isset( $option['sanitize_callback'] ) ? $option['sanitize_callback'] : '',
 						'placeholder'       => isset( $option['placeholder'] ) ? $option['placeholder'] : '',
 						'type'              => $type,
-						'multi'             => isset( $option['multi'] ) ? $option['multi'] : false,
 						'optgroup'          => isset( $option['optgroup'] ) ? intval( $option['optgroup'] ) : 0,
+						'multi'             => isset( $option['multi'] ) ? intval( $option['multi'] ) : 0,
 						'fields'            => isset( $option['fields'] ) ? $option['fields'] : [],
 						'sortable'          => isset( $option['sortable'] ) ? intval( $option['sortable'] ) : 0,
-						'allow_new'         => isset( $option['allow_new'] ) ? intval( $option['allow_new'] ) : 0,//only works for repeatable
+						'allow_new'         => isset( $option['allow_new'] ) ? intval( $option['allow_new'] ) : 0,    //only works for repeatable
+						'allow_clear'       => isset( $option['allow_clear'] ) ? intval( $option['allow_clear'] ) : 0,//for select2
 						'check_content'     => isset( $option['check_content'] ) ? $option['check_content'] : '',
-						'inline'            => isset( $option['inline'] ) ? absint( $option['inline'] ) : 1,
+						'inline'            => isset( $option['inline'] ) ? absint( $option['inline'] ) : 1
 					];
 
 					add_settings_field( "{$section}[{$name}]", $label, $callback, $section, $section, $args );
@@ -158,7 +205,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			foreach ( $this->settings_sections as $section ) {
 				register_setting( $section['id'], $section['id'], [ $this, 'sanitize_options' ] );
 			}
-		}//end admin_init
+		}//end method admin_init
 
 		/**
 		 * Prepares default values by section
@@ -176,7 +223,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			}
 
 			return $default_values;
-		}//end getDefaultValueBySection
+		}//end method getDefaultValueBySection
 
 		/**
 		 * Prepares default values by section
@@ -187,32 +234,49 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 */
 		function getMissingDefaultValueBySection( $section_id ) {
 			$section_value = get_option( $section_id );
-			$fields        = $this->settings_fields[ $section_id ];
+
+			$fields = $this->settings_fields[ $section_id ];
 			foreach ( $fields as $field ) {
 				if ( ! isset( $section_value[ $field['name'] ] ) ) {
 					$section_value[ $field['name'] ] = isset( $field['default'] ) ? $field['default'] : '';
 				}
+
 			}
 
 			return $section_value;
-		}//end getMissingDefaultValueBySection
+		}//end method getMissingDefaultValueBySection
 
 		/**
 		 * Get field description for display
 		 *
-		 * @param $args
+		 *
+		 * @param  array  $args
+		 * @param  string  $element_class
 		 *
 		 * @return string
 		 */
-		public function get_field_description( $args ) {
+		public function get_field_description( $args, $element_class = '' ) {
 			if ( ! empty( $args['desc'] ) ) {
-				$desc = sprintf( '<p class="description">%s</p>', wp_kses_post($args['desc']) );
+				$field_id         = $args['id'];
+				$desc_extra_class = ( $element_class != '' ) ? ' description_' . $element_class : '';
+				$desc             = sprintf( '<div class="description description_' . esc_attr( $field_id ) . $desc_extra_class . '">%s</div>', $args['desc'] );
 			} else {
 				$desc = '';
 			}
 
 			return $desc;
-		}//end get_field_description
+		}//end method get_field_description
+
+		/**
+		 * Displays a info field
+		 *
+		 * @param  array  $args  settings field args
+		 */
+		function callback_info( $args ) {
+			$html = $args['desc'];
+
+			echo wp_kses_post($html);
+		}//end method callback_info
 
 		/**
 		 * Displays heading field using h3
@@ -222,7 +286,11 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * @return string
 		 */
 		function callback_heading( $args ) {
-			$html = '<h3 class="setting_heading"><span class="setting_heading_title">' . $args['name'] . '</span><a title="' . esc_attr__( 'Click to show hide', 'wpnextpreviouslink' ) . '" class="setting_heading_toggle" href="#">' . esc_attr__( 'Click to show hide', 'wpnextpreviouslink' ) . '</a></h3>';
+			$plus_svg  = wpnextpreviouslink_load_svg( 'icon_plus' );
+			$minus_svg = wpnextpreviouslink_load_svg( 'icon_minus' );
+
+			$html = '<h3 class="setting_heading"><span class="setting_heading_title">' . esc_html( $args['name'] ) . '</span><a title="' . esc_attr__( 'Click to show hide',
+					'wpnextpreviouslink' ) . '" class="setting_heading_toggle button outline primary icon-only icon-inline" href="#"><i class="cbx-icon cbx-icon-img setting_heading_toggle_plus">' . $plus_svg . '</i><i class="cbx-icon cbx-icon-img setting_heading_toggle_minus">' . $minus_svg . '</i></a></h3>';
 			$html .= $this->get_field_description( $args );
 
 			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -239,7 +307,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html = '<h4 class="setting_subheading">' . $args['name'] . '</h4>';
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_subheading
 
 		/**
@@ -249,9 +317,10 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 *
 		 * @return void
 		 */
-		function callback_html( $args ) {
-			echo $this->get_field_description( $args );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		function callback_html( $args, $value = null ) {
+			echo $this->get_field_description( $args ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_html
+
 
 		/**
 		 * Displays a text field for a settings field
@@ -263,7 +332,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 */
 		function callback_text( $args, $value = null ) {
 			if ( $value === null ) {
-				$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
+				$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
 			}
 			$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 			$type = isset( $args['type'] ) ? $args['type'] : 'text';
@@ -274,8 +343,28 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html = sprintf( '<input autocomplete="none" onfocus="this.removeAttribute(\'readonly\');" readonly type="%1$s" class="%2$s-text" id="%6$s" name="%3$s[%4$s]" value="%5$s"/>', $type, $size, $args['section'], $args['id'], $value, $html_id );
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end callback_text
+
+		/**
+		 * Displays a email field for a settings field
+		 *
+		 * @param array $args settings field args
+		 */
+		function callback_email( $args ) {
+			$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
+			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
+			$type  = isset( $args['type'] ) ? $args['type'] : 'text';
+
+			$html_id = "{$args['section']}_{$args['id']}";
+			$html_id = $this->settings_clean_label_for( $html_id );
+
+			$html = sprintf( '<input  autocomplete="none" onfocus="this.removeAttribute(\'readonly\');" readonly type="%1$s" class="%2$s-text" id="%6$s" name="%3$s[%4$s]" value="%5$s"/>', $type, $size, $args['section'], $args['id'], $value, $html_id );
+			$html .= $this->get_field_description( $args );
+
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}//end method callback_email
+
 
 		/**
 		 * Displays an url field for a settings field
@@ -297,7 +386,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 */
 		function callback_number( $args, $value = null ) {
 			if ( $value === null ) {
-				$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
+				$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
 			}
 
 			$size        = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
@@ -313,7 +402,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html = sprintf( '<input type="%1$s" class="%2$s-number" id="%10$s" name="%3$s[%4$s]" value="%5$s"%6$s%7$s%8$s%9$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder, $min, $max, $step, $html_id );
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_number
 
 		/**
@@ -326,7 +415,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 */
 		function callback_textarea( $args, $value = null ) {
 			if ( $value === null ) {
-				$value = esc_textarea( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
+				$value = esc_textarea( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
 			}
 			$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
@@ -336,8 +425,9 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html = sprintf( '<textarea rows="5" cols="55" class="%1$s-text" id="%5$s" name="%2$s[%3$s]">%4$s</textarea>', $size, $args['section'], $args['id'], $value, $html_id );
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_textarea
+
 
 		/**
 		 * Displays a checkbox for a settings field
@@ -348,37 +438,12 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * @return void
 		 */
 		function callback_checkbox( $args, $value = null ) {
-			/*if ( $value === null ) {
-				$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
-			}
-
-			$html_id = "{$args['section']}_{$args['id']}";
-			$html_id = $this->settings_clean_label_for( $html_id );
-
-			$html = '<fieldset>';
-			$html .= sprintf( '<label for="wpuf-%1$s">', $html_id );
-			$html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
-
-			$active_class = ( $value == 'on' ) ? 'active' : '';
-			$html         .= '<span class="checkbox-toggle-btn ' . esc_attr( $active_class ) . '">';
-			//$html         .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s_%2$s" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ) );
-			$html .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%4$s" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ), $html_id );
-			$html .= '<i class="checkbox-round-btn"></i></span>';
-
-			$html .= sprintf( '<i class="checkbox-round-btn-text">%1$s</i></label>', $args['desc'] );
-			$html .= '</fieldset>';
-
-			echo $html;*/
-
 			if ( $value === null ) {
-				$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
+				$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
 			}
 
 			$html_id = "{$args['section']}_{$args['id']}";
 			$html_id = $this->settings_clean_label_for( $html_id );
-
-			//$display_inline        = isset( $args['inline']) ? absint($args['inline']) : 1;
-			//$display_inline_class = ($display_inline)? 'radio_fields_inline' : '';
 
 			$html = '<div class="checkbox_field magic_checkbox_field">';
 			$html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
@@ -387,7 +452,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html .= sprintf( '%1$s</label>', $args['desc'] );
 			$html .= '</div>';
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_checkbox
 
 		/**
@@ -399,56 +464,10 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * @return void
 		 */
 		function callback_multicheck( $args, $value = null ) {
-			/*$sortable = isset( $args['sortable'] ) ? intval( $args['sortable'] ) : 0;
-
-			if ( $value === null ) {
-				$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
-			}
-
-			if ( ! is_array( $value ) ) {
-				$value = [];
-			}
-
-			$sortable_class = ( $sortable ) ? 'multicheck_fields_sortable' : '';
-
-			$html = '<fieldset class="multicheck_fields ' . esc_attr( $sortable_class ) . '">';
-
-			$options             = $args['options'];
-			$options_keys        = array_keys( $options );
-			$options_keys_diff   = array_diff( $options_keys, $value );
-			$options_keys_sorted = array_merge( $value, $options_keys_diff );
-
-			foreach ( $options_keys_sorted as $key ) {
-				$label = isset( $options[ $key ] ) ? esc_attr( $options[ $key ] ) : esc_attr( $key );
-
-				$checked      = in_array( $key, $value ) ? ' checked="checked" ' : '';
-				$active_class = in_array( $key, $value ) ? 'active' : '';
-
-				$html_id = "{$args['section']}_{$args['id']}_{$key}";
-				$html_id = $this->settings_clean_label_for( $html_id );
-
-				$html .= '<p class="multicheck_field">';
-				if ( $sortable ) {
-					$html .= '<span class="multicheck_field_handle"></span>';
-				}
-
-				$html .= sprintf( '<label for="wpuf-%1$s">', $html_id );
-				$html .= sprintf( '<input type="hidden" name="%1$s[%2$s][%3$s]" value="" />', $args['section'], $args['id'], $key );
-				$html .= '<span class="checkbox-toggle-btn ' . esc_attr( $active_class ) . '">';
-				$html .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%5$s" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, $checked, $html_id );
-				$html .= '<i class="checkbox-round-btn"></i></span>';
-
-				$html .= sprintf( '<i class="checkbox-round-btn-text">%1$s</i></label></p>', $label );
-			}
-			$html .= $this->get_field_description( $args );
-			$html .= '</fieldset>';
-
-			echo $html;*/
-
 			$sortable = isset( $args['sortable'] ) ? intval( $args['sortable'] ) : 0;
 
 			if ( $value === null ) {
-				$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
+				$value = $this->get_field( $args['id'], $args['section'], $args['default'] );
 			}
 
 			if ( ! is_array( $value ) ) {
@@ -465,7 +484,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 
 			$sortable_class = ( $sortable ) ? 'checkbox_fields_sortable' : '';
 
-			$html = '<p class="grouped gapless grouped_buttons checkbox_fields_check_actions"><a href="#" class="button primary checkbox_fields_check_action_call">' . esc_html__( 'Check All', 'cbxresume' ) . '</a><a href="#" class="button outline checkbox_fields_check_action_ucall">' . esc_html__( 'Uncheck All', 'cbxresume' ) . '</a></p>';
+			$html = '<p class="grouped gapless grouped_buttons checkbox_fields_check_actions"><a href="#" class="button primary checkbox_fields_check_action_call">' . esc_html__( 'Check All', 'wpnextpreviouslink' ) . '</a><a href="#" class="button outline checkbox_fields_check_action_ucall">' . esc_html__( 'Uncheck All', 'wpnextpreviouslink' ) . '</a></p>';
 			$html .= '<div class="checkbox_fields magic_checkbox_fields ' . esc_attr( $sortable_class ) . ' ' . esc_attr( $display_inline_class ) . '">';
 
 			$options = $args['options'];//this can be regular array or associative array
@@ -487,15 +506,6 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 					$html .= '<span class="checkbox_field_handle"></span>';
 				}
 
-				/*$html .= sprintf( '<label for="wpuf-%1$s">', $html_id );
-				$html .= sprintf( '<input type="hidden" name="%1$s[%2$s][%3$s]" value="" />', $args['section'], $args['id'], $key );
-				$html .= '<span class="checkbox-toggle-btn ' . esc_attr( $active_class ) . '">';
-				$html .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%5$s" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, $checked, $html_id );
-				$html .= '<i class="checkbox-round-btn"></i></span>';
-
-				$html .= sprintf( '<i class="checkbox-round-btn-text">%1$s</i></label></p>', $label );*/
-
-
 				$html .= sprintf( '<input type="hidden" name="%1$s[%2$s][%3$s]" value="" />', $args['section'], $args['id'], $key );
 				$html .= sprintf( '<input type="checkbox" class="magic-checkbox" id="wpuf-%5$s" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, $checked, $html_id );
 				$html .= sprintf( '<label for="wpuf-%1$s">', $html_id );
@@ -503,15 +513,15 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 				$html .= '</div>';
 			}
 
-			$html .= $this->get_field_description( $args );
 			$html .= '</div>';
+			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_multicheck
 
 
 		/**
-		 * Displays a multicheckbox a settings field
+		 * Displays a radio settings field
 		 *
 		 * @param  array  $args
 		 * @param $value
@@ -519,27 +529,8 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * @return void
 		 */
 		function callback_radio( $args, $value = null ) {
-			/*if ( $value === null ) {
-				$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
-			}
-
-			$html = '<fieldset class="radio_fields">';
-			foreach ( $args['options'] as $key => $label ) {
-
-				$html_id = "{$args['section']}_{$args['id']}_{$key}";
-				$html_id = $this->settings_clean_label_for( $html_id );
-
-				$html .= sprintf( '<label for="wpuf-%1$s">', $html_id );
-				$html .= sprintf( '<input type="radio" class="radio" id="wpuf-%5$s" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ), $html_id );
-				$html .= sprintf( '%1$s</label>', $label );
-			}
-			$html .= $this->get_field_description( $args );
-			$html .= '</fieldset>';
-
-			echo $html;*/
-
 			if ( $value === null ) {
-				$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
+				$value = $this->get_field( $args['id'], $args['section'], $args['default'] );
 			}
 
 			$display_inline       = isset( $args['inline'] ) ? absint( $args['inline'] ) : 1;
@@ -562,10 +553,10 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			}
 
 
-			$html .= $this->get_field_description( $args );
 			$html .= '</div>';
+			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_radio
 
 		/**
@@ -575,37 +566,12 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 *
 		 * @return void
 		 */
-		function callback_select_back( $args ) {
-			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
-			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular selecttwo-select';
-
-			$html_id = "{$args['section']}_{$args['id']}";
-			$html_id = $this->settings_clean_label_for( $html_id );
-
-			$html = sprintf( '<div class="selecttwo-select-wrapper"><select class="%1$s" name="%2$s[%3$s]" id="%3$s">', $size, $args['section'], $html_id );
-			foreach ( $args['options'] as $key => $label ) {
-				$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $value, $key, false ), $label );
-			}
-			$html .= '</select></div>';
-			$html .= $this->get_field_description( $args );
-
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		}//end method callback_select
-
-		/**
-		 * Displays a multi-selectbox for a settings field
-		 *
-		 * @param $args
-		 *
-		 * @return void
-		 */
 		function callback_select( $args ) {
-
-			$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
+			$value = $this->get_field( $args['id'], $args['section'], $args['default'] );
 
 			$multi      = isset( $args['multi'] ) ? intval( $args['multi'] ) : 0;
 			$multi_name = ( $multi ) ? '[]' : '';
-			$multi_attr = ( $multi ) ? 'multiple' : '';
+			$multi_attr = ( $multi ) ? ' multiple ' : '';
 
 			if ( $multi && ! is_array( $value ) ) {
 				$value = [];
@@ -618,11 +584,14 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular selecttwo-select';
 
 			if ( $args['placeholder'] == '' ) {
-				$args['placeholder'] = esc_html__( 'Please Select', 'cbxresume' );
+				$args['placeholder'] = esc_html__( 'Please Select', 'wpnextpreviouslink' );
 			}
 
-			$html = sprintf( '<input type="hidden" name="%1$s[%2$s][]" value="" />', $args['section'], $args['id'] );
-			$html .= sprintf( '<div class="selecttwo-select-wrapper"><select ' . $multi_attr . ' class="%1$s" name="%2$s[%3$s]' . $multi_name . '" id="%2$s[%3$s]" style="min-width: 150px !important;"  placeholder="%4$s" data-placeholder="%4$s">', $size, $args['section'], $args['id'], $args['placeholder'] );
+			$html_id = "{$args['section']}_{$args['id']}";
+			$html_id = $this->settings_clean_label_for( $html_id );
+
+			//$html = sprintf( '<input type="hidden" name="%1$s[%2$s][]" value="" />', $args['section'], $args['id'] );
+			$html = sprintf( '<div class="selecttwo-select-wrapper"><select ' . $multi_attr . ' class="%1$s" name="%2$s[%3$s]' . $multi_name . '" id="%5$s" style="min-width: 150px !important;"  placeholder="%4$s" data-placeholder="%4$s">', $size, $args['section'], $args['id'], $args['placeholder'], $html_id );
 
 			if ( isset( $args['optgroup'] ) && $args['optgroup'] ) {
 				foreach ( $args['options'] as $opt_grouplabel => $option_vals ) {
@@ -631,14 +600,14 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 					if ( ! is_array( $option_vals ) ) {
 						$option_vals = [];
 					} else {
-						$option_vals = $option_vals;
+						//$option_vals = $option_vals;
 					}
 
 					foreach ( $option_vals as $key => $val ) {
 						$selected = in_array( $key, $value ) ? ' selected="selected" ' : '';
 						$html     .= sprintf( '<option value="%s" ' . $selected . '>%s</option>', $key, $val );
 					}
-					$html .= '<optgroup>';
+					$html .= '</optgroup>';
 				}
 			} else {
 				$option_vals = $args['options'];
@@ -656,7 +625,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html .= '</select></div>';
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_select
 
 		/**
@@ -667,7 +636,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * @return void
 		 */
 		function callback_multiselect( $args ) {
-			$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
+			$value = $this->get_field( $args['id'], $args['section'], $args['default'] );
 
 			if ( ! is_array( $value ) ) {
 				$value = [];
@@ -688,12 +657,13 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 
 			if ( isset( $args['optgroup'] ) && $args['optgroup'] ) {
 				foreach ( $args['options'] as $opt_grouplabel => $option_vals ) {
-					$html .= '<optgroup label="' . esc_attr($opt_grouplabel) . '">';
+					$html .= '<optgroup label="' . $opt_grouplabel . '">';
 
 					if ( ! is_array( $option_vals ) ) {
 						$option_vals = [];
 					} else {
-						$option_vals = $option_vals;
+						//$option_vals = $this->convert_associate($option_vals);
+						//$option_vals = $option_vals;
 					}
 
 
@@ -701,11 +671,12 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 						$selected = in_array( $key, $value ) ? ' selected="selected" ' : '';
 						$html     .= sprintf( '<option value="%s" ' . $selected . '>%s</option>', $key, $val );
 					}
-					$html .= '<optgroup>';
+					$html .= '</optgroup>';
 				}
 			} else {
-
+				//$option_vals = $this->convert_associate($args['options']);
 				$option_vals = $args['options'];
+
 				foreach ( $option_vals as $key => $val ) {
 					$selected = in_array( $key, $value ) ? ' selected="selected" ' : '';
 					$html     .= sprintf( '<option value="%s" ' . $selected . '>%s</option>', $key, $val );
@@ -715,20 +686,8 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html .= '</select></div>';
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_multiselect
-
-
-		/**
-		 * Displays a info field
-		 *
-		 * @param  array  $args  settings field args
-		 */
-		function callback_info( $args ) {
-			$html = $args['desc'];
-
-			echo wp_kses_post($html);
-		}//end method callback_info
 
 		/**
 		 * Displays a rich text textarea for a settings field
@@ -740,11 +699,11 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 */
 		function callback_wysiwyg( $args, $value = null ) {
 			if ( $value === null ) {
-				$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
+				$value = $this->get_field( $args['id'], $args['section'], $args['default'] );
 			}
 			$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : '500px';
 
-			echo '<div style="max-width: ' . esc_attr($size) . ';">';
+			echo '<div style="max-width: ' . esc_attr( $size ) . ';">';
 
 			$html_id = "{$args['section']}_{$args['id']}";
 			$html_id = $this->settings_clean_label_for( $html_id );
@@ -758,11 +717,12 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 				$editor_settings = array_merge( $editor_settings, $args['options'] );
 			}
 
+			//wp_editor( $value, $args['section'] . '-' . $args['id'], $editor_settings );
 			wp_editor( $value, $html_id, $editor_settings );
 
-			echo '</div>';
+			echo '</div>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			echo $this->get_field_description( $args );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $this->get_field_description( $args ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_wysiwyg
 
 
@@ -772,15 +732,17 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * @param  array  $args  settings field args
 		 */
 		function callback_file( $args ) {
-			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
+			$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
-
+			//$id    = $args['section'] . '[' . $args['id'] . ']';
 			$html_id = "{$args['section']}_{$args['id']}";
 			$html_id = $this->settings_clean_label_for( $html_id );
 
 
-			$label = isset( $args['options']['button_label'] ) ? $args['options']['button_label'] : esc_html__( 'Choose File', 'wpnextpreviouslink' );
+			$label = isset( $args['options']['button_label'] ) ?
+				$args['options']['button_label'] :
+				esc_html__( 'Choose File', 'wpnextpreviouslink' );
 
 			$html = '<div class="wpsa-browse-wrap">';
 			$html .= sprintf( '<input type="text" class="chota-inline %1$s-text wpsa-url" id="%5$s" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value, $html_id );
@@ -788,7 +750,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html .= '</div>';
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end method callback_file
 
 		/**
@@ -801,7 +763,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 */
 		function callback_color( $args, $value = null ) {
 			if ( $value === null ) {
-				$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
+				$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
 			}
 
 			$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
@@ -817,8 +779,28 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end callback_color
+
+		/**
+		 * Displays a password field for a settings field
+		 *
+		 * @param  array  $args
+		 *
+		 * @return void
+		 */
+		function callback_password( $args ) {
+			$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
+			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
+
+			$html_id = "{$args['section']}_{$args['id']}";
+			$html_id = $this->settings_clean_label_for( $html_id );
+
+			$html = sprintf( '<input type="password" class="%1$s-text" id="%5$s" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value, $html_id );
+			$html .= $this->get_field_description( $args );
+
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}//end method callback_password
 
 		/**
 		 * Host servers type field
@@ -834,7 +816,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$default   = $args['default'];
 			$fields    = isset( $args['fields'] ) ? $args['fields'] : [];
 			$allow_new = isset( $args['allow_new'] ) ? intval( $args['allow_new'] ) : 0;
-			$value     = $this->get_option( $args['id'], $args['section'], $args['default'] );
+			$value     = $this->get_field( $args['id'], $args['section'], $args['default'] );
 
 
 			if ( ! is_array( $value ) ) {
@@ -927,28 +909,8 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$html .= '</div>';
 			$html .= $this->get_field_description( $args );
 
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end callback_repeat
-
-		/**
-		 * Displays a password field for a settings field
-		 *
-		 * @param  array  $args
-		 *
-		 * @return void
-		 */
-		function callback_password( $args ) {
-			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['default'] ) );
-			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
-
-			$html_id = "{$args['section']}_{$args['id']}";
-			$html_id = $this->settings_clean_label_for( $html_id );
-
-			$html = sprintf( '<input type="password" class="%1$s-text" id="%5$s" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value, $html_id );
-			$html .= $this->get_field_description( $args );
-
-			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		}//end method callback_password
 
 		/**
 		 * Displays a textimg field for a settings field
@@ -1066,12 +1028,12 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 
 					//$html       .= '<option ' . $selected . '  value="">' . esc_attr__( 'Select Order By', 'wpnextpreviouslink' ) . '</option>';
 
-                    $orders = WPNextPreviousLinkHelper::post_type_orders_by($post);
+					$orders = WPNextPreviousLinkHelper::post_type_orders_by($post);
 
 					if ( is_array( $orders ) && sizeof( $orders ) > 0 ) {
 						foreach ( $orders as $key => $label ) {
-								$selected = ( $sel_value == $key ) ? ' selected="selected" ' : '';
-								$html     .= '<option ' . $selected . ' value="' . esc_attr($key) . '">' . esc_attr($label) . '</option>';
+							$selected = ( $sel_value == $key ) ? ' selected="selected" ' : '';
+							$html     .= '<option ' . $selected . ' value="' . esc_attr($key) . '">' . esc_attr($label) . '</option>';
 						}
 					}
 
@@ -1086,6 +1048,39 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 
 			echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}//end callback_posttypebinding
+
+
+		/**
+		 * Convert an array to associative if not
+		 *
+		 * @param $value
+		 */
+		private function convert_associate( $value ) {
+			if ( ! $this->is_associate( $value ) && sizeof( $value ) > 0 ) {
+				$new_value = [];
+				foreach ( $value as $val ) {
+					$new_value[ $val ] = ucfirst( $val );
+				}
+
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				return $new_value;
+			}
+
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return $value;
+		}//end method convert_associate
+
+
+		/**
+		 * check if any array is associative
+		 *
+		 * @param  array  $array
+		 *
+		 * @return bool
+		 */
+		private function is_associate( array $array ) {
+			return count( array_filter( array_keys( $array ), 'is_string' ) ) > 0;
+		}//end method is_associate
 
 		/**
 		 * Sanitize callback for Settings API
@@ -1102,41 +1097,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			}
 
 			return $options;
-		}//end method sanitize_options
-
-		/**
-		 * Convert an array to associative if not
-		 *
-		 * @param $value
-		 *
-		 * @return array|mixed
-		 */
-		private function convert_associate( $value ) {
-			if ( ! $this->is_associate( $value ) && sizeof( $value ) > 0 ) {
-				$new_value = [];
-				foreach ( $value as $val ) {
-					$new_value[ $val ] = ucfirst( $val );
-				}
-
-				return $new_value;
-			}
-
-
-			return $value; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		}//end method convert_associate
-
-
-		/**
-		 * check if any array is associative
-		 *
-		 * @param  array  $array
-		 *
-		 * @return bool
-		 */
-		private function is_associate( array $array ) {
-			return count( array_filter( array_keys( $array ), 'is_string' ) ) > 0;
-		}//end method is_associate
-
+		}
 
 		/**
 		 * Get sanitization callback for given option slug
@@ -1157,8 +1118,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 						continue;
 					}
 
-					//if ( $option['type'] == 'multiselect' || $option['type'] == 'multicheck' ) {
-					if ( ( $option['type'] == 'select' && isset( $option['multi'] ) && $option['multi'] ) || $option['type'] == 'multicheck' ) {
+					if ( $option['type'] == 'multiselect' || $option['type'] == 'multicheck' ) {
 						$option['sanitize_callback'] = [ $this, 'sanitize_multi_select_check' ];
 					}
 
@@ -1168,7 +1128,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			}
 
 			return false;
-		}//end get_sanitize_callback
+		}//end method get_sanitize_callback
 
 		/**
 		 * Remove empty values from multi select fields (multi select and multi checkbox)
@@ -1183,21 +1143,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			}
 
 			return $option_value;
-		}//end sanitize_multi_select_check
-
-		/**
-		 * Clean label_for or id tad
-		 *
-		 * @param $str
-		 *
-		 * @return string
-		 */
-		public function settings_clean_label_for( $str ) {
-			$str = str_replace( '][', '_', $str );
-			$str = str_replace( ']', '_', $str );
-
-			return str_replace( '[', '_', $str );
-		}//end settings_clean_label_for
+		}//end method sanitize_multi_select_check
 
 		/**
 		 * Get the value of a settings field
@@ -1216,11 +1162,55 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			}
 
 			return $default;
-		}//end get_option
+		}//end method get_option
 
-        function get_opt($option, $section, $default = '' ) {
-            return $this->get_option($option, $section, $default);
-        }//end method postorders
+		/**
+		 * Get the value of a settings field
+		 *
+		 * @param  string  $option  settings field name
+		 * @param  string  $section  the section name this field belongs to
+		 * @param  string  $default  default text if it's not found
+		 *
+		 * @return string
+		 */
+		function get_field( $option, $section, $default = '' ) {
+			$options = get_option( $section );
+
+			if ( isset( $options[ $option ] ) ) {
+				return $options[ $option ];
+			}
+
+			return $default;
+		}//end method get_option
+
+		/**
+		 * Get the value of a settings field
+		 *
+		 * @param  string  $option  settings field name
+		 * @param  string  $section  the section name this field belongs to
+		 * @param  string  $default  default text if it's not found
+		 *
+		 * @return string
+		 */
+		function get_opt( $option, $section, $default = '' ) {
+			return $this->get_field( $option, $section, $default );
+		}//end method get_option
+
+		/**
+		 * Clean label_for or id tad
+		 *
+		 * @param $str
+		 *
+		 * @return string
+		 */
+		public function settings_clean_label_for( $str ) {
+			$str = str_replace( '][', '_', $str );
+			$str = str_replace( ']', '_', $str );
+
+			return str_replace( '[', '_', $str );
+
+			//return $str;
+		}//end settings_clean_label_for
 
 		/**
 		 * Show navigations as tab
@@ -1237,8 +1227,9 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 				$active_class  = ( $i === 0 ) ? 'active' : '';
 				$active_select = ( $i === 0 ) ? ' selected ' : '';
 
+
 				$html        .= sprintf( '<a data-tabid="' . $tab['id'] . '" href="#%1$s" class="%3$s" id="%1$s-tab">%2$s</a>', $tab['id'], $tab['title'], $active_class );
-				$mobile_navs .= '<option ' . esc_attr( $active_select ) . ' value="' . $tab['id'] . '">' . esc_attr( $tab['title'] ) . '</option>';
+				$mobile_navs .= '<option ' . esc_attr( $active_select ) . ' value="' . esc_attr( $tab['id'] ) . '">' . esc_attr( $tab['title'] ) . '</option>';
 				$i ++;
 			}
 
@@ -1246,54 +1237,57 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 			$mobile_navs .= '</select></div>';
 			$html        .= '</nav>';
 
-			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<div id="setting-tabs-nav-wrap">';
+			echo $html;        //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $mobile_navs; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '</div>';
 		}//end method show_navigation
 
 		/**
 		 * Show the section settings forms
 		 *
-		 * This function displays every section in a different form
+		 * This function displays every sections in a different form
 		 */
 		function show_forms() {
 			?>
-            <div id="global_setting_group_actions" class="mb-0 mt-10">
-				<?php do_action( 'wpnextpreviouslink_setting_group_actions_start' ); ?>
-                <a class="button outline primary global_setting_group_action global_setting_group_action_open pull-right" href="#"><?php esc_html_e( 'Toggle All Sections', 'wpnextpreviouslink' ); ?></a>
-				<?php do_action( 'wpnextpreviouslink_setting_group_actions_end' ); ?>
-                <div class="clear clearfix"></div>
-            </div>
-            <div class="metabox-holder">
-				<?php
-
-				$i = 0;
-				foreach ( $this->settings_sections as $form ) {
-					$display_style = ( $i === 0 ) ? '' : 'display: none;';
-
-					?>
-                    <div id="<?php echo esc_attr($form['id']); ?>" class="global_setting_group" style="<?php echo esc_attr( $display_style ); ?>">
-                        <form method="post" action="options.php" class="wpnextpreviouslink_setting_form">
-							<?php
-							do_action( 'wpnextpreviouslink_setting_form_start', $form );
-							do_action( 'wpnextpreviouslink_setting_form_top_' . esc_attr($form['id']), $form );
-
-							settings_fields( $form['id'] );
-							do_settings_sections( $form['id'] );
-
-							do_action( 'wpnextpreviouslink_setting_form_bottom_' . esc_attr($form['id']), $form );
-							do_action( 'wpnextpreviouslink_setting_form_end', $form );
-							?>
-                            <div class="global_setting_submit_buttons_wrap">
-								<?php do_action( 'wpnextpreviouslink_setting_submit_buttons_start', esc_attr($form['id']) ); ?>
-								<?php submit_button( esc_html__( 'Save Settings', 'wpnextpreviouslink' ), 'button primary submit_setting', 'submit', true, [ 'id' => 'submit_' . esc_attr( $form['id'] ) ] ); ?>
-								<?php do_action( 'wpnextpreviouslink_setting_submit_buttons_end', esc_attr($form['id']) ); ?>
-                            </div>
-                        </form>
-                    </div>
+            <div id="setting-tabs-contents">
+                <div id="global_setting_group_actions" class="mb-0 mt-10">
+					<?php do_action( 'wpnextpreviouslink_setting_group_actions_start' ); ?>
+                    <a class="button outline primary global_setting_group_action global_setting_group_action_open pull-right" href="#"><?php esc_html_e( 'Toggle All Sections', 'wpnextpreviouslink' ); ?></a>
+					<?php do_action( 'wpnextpreviouslink_setting_group_actions_end' ); ?>
+                    <div class="clear clearfix"></div>
+                </div>
+                <div class="metabox-holder">
 					<?php
-					$i ++;
-				}
-				?>
+					$i = 0;
+					foreach ( $this->settings_sections as $form ) {
+						$display_style = ( $i === 0 ) ? '' : 'display: none;';
+						?>
+                        <div id="<?php echo esc_attr( $form['id'] ); ?>" class="global_setting_group" style="<?php echo esc_attr( $display_style ); ?>">
+                            <form method="post" action="options.php" class="wpnextpreviouslink_setting_form">
+								<?php
+								do_action( 'wpnextpreviouslink_setting_form_start', $form );
+								do_action( 'wpnextpreviouslink_setting_form_top_' . $form['id'], $form );
+
+								settings_fields( $form['id'] );
+								do_settings_sections( $form['id'] );
+
+								do_action( 'wpnextpreviouslink_setting_form_bottom_' . $form['id'], $form );
+								do_action( 'wpnextpreviouslink_setting_form_end', $form );
+								?>
+
+                                <div class="global_setting_submit_buttons_wrap">
+									<?php do_action( 'wpnextpreviouslink_setting_submit_buttons_start', $form['id'] ); ?>
+									<?php submit_button( esc_html__( 'Save Settings', 'wpnextpreviouslink' ), 'button primary submit_setting', 'submit', true, [ 'id' => 'submit_' . esc_attr( $form['id'] ) ] ); ?>
+									<?php do_action( 'wpnextpreviouslink_setting_submit_buttons_end', $form['id'] ); ?>
+                                </div>
+                            </form>
+                        </div>
+						<?php
+						$i ++;
+					}
+					?>
+                </div>
             </div>
 			<?php
 		}//end show_forms

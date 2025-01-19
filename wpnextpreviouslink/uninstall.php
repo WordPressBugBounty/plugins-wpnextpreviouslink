@@ -29,3 +29,18 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
+
+/**
+ * The code that runs during plugin uninstall.
+ */
+function uninstall_wpnextpreviouslink() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpnextpreviouslink-setting.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/WPNextPreviousLinkHelper.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/WPNextPreviousLinkUninstall.php';
+
+	WPNextPreviousLinkUninstall::uninstall();
+}//end function uninstall_wpnextpreviouslink
+
+if ( ! defined( 'WPNEXTPREVIOUSLINK_PLUGIN_NAME' ) ) {
+	uninstall_wpnextpreviouslink();
+}

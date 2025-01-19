@@ -1,9 +1,9 @@
 === CBX Next Previous Article ===
 Contributors: codeboxr,manchumahara
 Tags: next prev,navigation,
-Requires at least: 3.0
-Tested up to: 6.5.3
-Stable tag: 2.7.2
+Requires at least: 5.3
+Tested up to: 6.7.1
+Stable tag: 2.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Shows next previous page or article link using arrow icon or box style, have set
 
 == Description ==
 
-Keeping visitors active in a website and putting them engaged in reading more articles is really a big challenge. CBX Next Previous Article plugin helps to engage user displaying easy navigation for next previous article or next previous page. Using the plugin setting there are lots of parameter to configure, show/hide and customize the presentation.
+Keeping visitors active on a website and engaged in reading more articles is a significant challenge. The CBX Next Previous Article plugin helps engage users by providing easy navigation for the next and previous articles or pages. The plugin offers many configurable parameters to show, hide, and customize the presentation.
 
 
 ### CBX Next Previous Article by [Codeboxr](https://codeboxr.com/product/show-next-previous-article-for-wordpress)
@@ -67,6 +67,13 @@ e.g.
 
 
 == Changelog ==
+= 2.7.3 =
+* [new] Plugin check version V1.3.1 compatible
+* [updated] WordPress core V6.7.1 compatible
+* [updated] Dashboard style improvement
+* [new] SVG icon added everywhere
+* [updated] Pro Addon V2.0.7 released
+
 = 2.7.2 =
 * [new] Skip next prev for specific post/page id(s) - Request in wp.org support https://wordpress.org/support/topic/hide-on-few-pages/
 * [new] Post 'order by' per post basis (in core only date)
