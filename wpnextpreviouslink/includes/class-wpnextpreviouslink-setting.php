@@ -36,6 +36,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * Singleton instance
 		 *
 		 * @var object
+		 * @since 2.7.4
 		 */
 		private static $_instance;
 
@@ -43,6 +44,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * Returns class's instance
 		 *
 		 * @return object|self
+		 * @since 2.7.4
 		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -55,19 +57,19 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Cloning is forbidden.
 		 *
-		 * @since 2.1
+		 * @since 2.7.4
 		 */
 		public function __clone() {
-			wc_doing_it_wrong( __FUNCTION__, esc_html__( 'Cloning is forbidden.', 'wpnextpreviouslink' ), '2.1' );
+			wpnextpreviouslink_doing_it_wrong( __FUNCTION__, esc_html__( 'Cloning is forbidden.', 'wpnextpreviouslink' ), '2.7.4' );
 		}//end method clone
 
 		/**
 		 * Unserializing instances of this class is forbidden.
 		 *
-		 * @since 2.1
+		 * @since 2.7.4
 		 */
 		public function __wakeup() {
-			wc_doing_it_wrong( __FUNCTION__, esc_html__( 'Unserializing instances of this class is forbidden.', 'wpnextpreviouslink' ), '2.1' );
+			wpnextpreviouslink_doing_it_wrong( __FUNCTION__, esc_html__( 'Unserializing instances of this class is forbidden.', 'wpnextpreviouslink' ), '2.7.4' );
 		}//end method wakeup
 
 		public function __construct() {
@@ -78,7 +80,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Set settings sections
 		 *
-		 * @param  array  $sections  setting sections array
+		 * @param array $sections setting sections array
 		 */
 		function set_sections( $sections ) {
 			$this->settings_sections = $sections;
@@ -89,7 +91,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Add a single section
 		 *
-		 * @param  array  $section
+		 * @param array $section
 		 */
 		function add_section( $section ) {
 			$this->settings_sections[] = $section;
@@ -100,7 +102,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Set settings fields
 		 *
-		 * @param  array  $fields  settings fields array
+		 * @param array $fields settings fields array
 		 */
 		function set_fields( $fields ) {
 			$this->settings_fields = $fields;
@@ -191,8 +193,10 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 						'multi'             => isset( $option['multi'] ) ? intval( $option['multi'] ) : 0,
 						'fields'            => isset( $option['fields'] ) ? $option['fields'] : [],
 						'sortable'          => isset( $option['sortable'] ) ? intval( $option['sortable'] ) : 0,
-						'allow_new'         => isset( $option['allow_new'] ) ? intval( $option['allow_new'] ) : 0,    //only works for repeatable
-						'allow_clear'       => isset( $option['allow_clear'] ) ? intval( $option['allow_clear'] ) : 0,//for select2
+						'allow_new'         => isset( $option['allow_new'] ) ? intval( $option['allow_new'] ) : 0,
+						//only works for repeatable
+						'allow_clear'       => isset( $option['allow_clear'] ) ? intval( $option['allow_clear'] ) : 0,
+						//for select2
 						'check_content'     => isset( $option['check_content'] ) ? $option['check_content'] : '',
 						'inline'            => isset( $option['inline'] ) ? absint( $option['inline'] ) : 1
 					];
@@ -250,8 +254,8 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		 * Get field description for display
 		 *
 		 *
-		 * @param  array  $args
-		 * @param  string  $element_class
+		 * @param array $args
+		 * @param string $element_class
 		 *
 		 * @return string
 		 */
@@ -270,18 +274,18 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a info field
 		 *
-		 * @param  array  $args  settings field args
+		 * @param array $args settings field args
 		 */
 		function callback_info( $args ) {
 			$html = $args['desc'];
 
-			echo wp_kses_post($html);
+			echo wp_kses_post( $html );
 		}//end method callback_info
 
 		/**
 		 * Displays heading field using h3
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 *
 		 * @return string
 		 */
@@ -299,7 +303,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays sub heading field using h4
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 *
 		 * @return void
 		 */
@@ -325,7 +329,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a text field for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 * @param $value
 		 *
 		 * @return void
@@ -369,7 +373,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays an url field for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 *
 		 * @return void
 		 */
@@ -380,7 +384,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a number field for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 *
 		 * @return void
 		 */
@@ -408,7 +412,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a textarea for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 * @param $value
 		 *
 		 * @return void
@@ -432,7 +436,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a checkbox for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 * @param $value
 		 *
 		 * @return void
@@ -458,7 +462,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a multicheckbox settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 * @param $value
 		 *
 		 * @return void
@@ -523,7 +527,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a radio settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 * @param $value
 		 *
 		 * @return void
@@ -562,7 +566,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a selectbox for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 *
 		 * @return void
 		 */
@@ -595,7 +599,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 
 			if ( isset( $args['optgroup'] ) && $args['optgroup'] ) {
 				foreach ( $args['options'] as $opt_grouplabel => $option_vals ) {
-					$html .= '<optgroup label="' . esc_attr($opt_grouplabel) . '">';
+					$html .= '<optgroup label="' . esc_attr( $opt_grouplabel ) . '">';
 
 					if ( ! is_array( $option_vals ) ) {
 						$option_vals = [];
@@ -692,7 +696,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a rich text textarea for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 * @param $value
 		 *
 		 * @return void
@@ -729,7 +733,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a file upload field for a settings field
 		 *
-		 * @param  array  $args  settings field args
+		 * @param array $args settings field args
 		 */
 		function callback_file( $args ) {
 			$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
@@ -756,7 +760,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a color picker field for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 * @param $value
 		 *
 		 * @return void
@@ -785,7 +789,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a password field for a settings field
 		 *
-		 * @param  array  $args
+		 * @param array $args
 		 *
 		 * @return void
 		 */
@@ -915,7 +919,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a textimg field for a settings field
 		 *
-		 * @param  array  $args  settings field args
+		 * @param array $args settings field args
 		 */
 		function callback_textimg( $args ) {
 			$wpnp_image_name = $this->get_option( 'wpnp_image_name', 'wpnextpreviouslink_basics' );
@@ -938,7 +942,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a post type taxonomy binding field for a settings field
 		 *
-		 * @param  array  $args  settings field args
+		 * @param array $args settings field args
 		 */
 		function callback_postcatbinding( $args ) {
 			$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
@@ -975,7 +979,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 						foreach ( $taxonomies as $key => $taxonomy ) {
 							if ( isset( $taxonomy->public ) && intval( $taxonomy->public ) == 1 ) {
 								$selected = ( $sel_value == $key ) ? ' selected="selected" ' : '';
-								$html     .= '<option ' . $selected . ' value="' . esc_attr($key) . '">' . esc_attr($taxonomy->labels->name) . '</option>';
+								$html     .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_attr( $taxonomy->labels->name ) . '</option>';
 							}
 						}
 					}
@@ -995,7 +999,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Displays a post type taxonomy binding field for a settings field
 		 *
-		 * @param  array  $args  settings field args
+		 * @param array $args settings field args
 		 */
 		function callback_posttypebinding( $args ) {
 			$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
@@ -1028,12 +1032,12 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 
 					//$html       .= '<option ' . $selected . '  value="">' . esc_attr__( 'Select Order By', 'wpnextpreviouslink' ) . '</option>';
 
-					$orders = WPNextPreviousLinkHelper::post_type_orders_by($post);
+					$orders = WPNextPreviousLinkHelper::post_type_orders_by( $post );
 
 					if ( is_array( $orders ) && sizeof( $orders ) > 0 ) {
 						foreach ( $orders as $key => $label ) {
 							$selected = ( $sel_value == $key ) ? ' selected="selected" ' : '';
-							$html     .= '<option ' . $selected . ' value="' . esc_attr($key) . '">' . esc_attr($label) . '</option>';
+							$html     .= '<option ' . $selected . ' value="' . esc_attr( $key ) . '">' . esc_attr( $label ) . '</option>';
 						}
 					}
 
@@ -1074,7 +1078,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * check if any array is associative
 		 *
-		 * @param  array  $array
+		 * @param array $array
 		 *
 		 * @return bool
 		 */
@@ -1102,7 +1106,7 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Get sanitization callback for given option slug
 		 *
-		 * @param  string  $slug  option slug
+		 * @param string $slug option slug
 		 *
 		 * @return mixed string or bool false
 		 */
@@ -1148,9 +1152,9 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Get the value of a settings field
 		 *
-		 * @param  string  $option  settings field name
-		 * @param  string  $section  the section name this field belongs to
-		 * @param  string  $default  default text if it's not found
+		 * @param string $option settings field name
+		 * @param string $section the section name this field belongs to
+		 * @param string $default default text if it's not found
 		 *
 		 * @return string
 		 */
@@ -1167,9 +1171,9 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Get the value of a settings field
 		 *
-		 * @param  string  $option  settings field name
-		 * @param  string  $section  the section name this field belongs to
-		 * @param  string  $default  default text if it's not found
+		 * @param string $option settings field name
+		 * @param string $section the section name this field belongs to
+		 * @param string $default default text if it's not found
 		 *
 		 * @return string
 		 */
@@ -1186,9 +1190,9 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 		/**
 		 * Get the value of a settings field
 		 *
-		 * @param  string  $option  settings field name
-		 * @param  string  $section  the section name this field belongs to
-		 * @param  string  $default  default text if it's not found
+		 * @param string $option settings field name
+		 * @param string $section the section name this field belongs to
+		 * @param string $default default text if it's not found
 		 *
 		 * @return string
 		 */
@@ -1253,7 +1257,8 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
             <div id="setting-tabs-contents">
                 <div id="global_setting_group_actions" class="mb-0 mt-10">
 					<?php do_action( 'wpnextpreviouslink_setting_group_actions_start' ); ?>
-                    <a class="button outline primary global_setting_group_action global_setting_group_action_open pull-right" href="#"><?php esc_html_e( 'Toggle All Sections', 'wpnextpreviouslink' ); ?></a>
+                    <a class="button outline primary global_setting_group_action global_setting_group_action_open pull-right"
+                       href="#"><?php esc_html_e( 'Toggle All Sections', 'wpnextpreviouslink' ); ?></a>
 					<?php do_action( 'wpnextpreviouslink_setting_group_actions_end' ); ?>
                     <div class="clear clearfix"></div>
                 </div>
@@ -1263,7 +1268,8 @@ if ( ! class_exists( 'WPNextPreviousLink_Settings_API' ) ):
 					foreach ( $this->settings_sections as $form ) {
 						$display_style = ( $i === 0 ) ? '' : 'display: none;';
 						?>
-                        <div id="<?php echo esc_attr( $form['id'] ); ?>" class="global_setting_group" style="<?php echo esc_attr( $display_style ); ?>">
+                        <div id="<?php echo esc_attr( $form['id'] ); ?>" class="global_setting_group"
+                             style="<?php echo esc_attr( $display_style ); ?>">
                             <form method="post" action="options.php" class="wpnextpreviouslink_setting_form">
 								<?php
 								do_action( 'wpnextpreviouslink_setting_form_start', $form );

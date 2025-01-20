@@ -83,8 +83,8 @@ class WPNextPreviousLinkAdmin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @param  string  $plugin_name  The name of this plugin.
-	 * @param  string  $version  The version of this plugin.
+	 * @param string $plugin_name The name of this plugin.
+	 * @param string $version The version of this plugin.
 	 *
 	 * @since    1.0.0
 	 */
@@ -129,7 +129,7 @@ class WPNextPreviousLinkAdmin {
 		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/vendors/';
 
 		$suffix       = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-		$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash($_GET['page']) ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		wp_register_style( 'awesome-notifications', $vendors_url_part . 'awesome-notifications/style.css', [], $version );
 		wp_register_style( 'pickr', $vendors_url_part . 'pickr/themes/classic.min.css', [], $version );
@@ -139,7 +139,12 @@ class WPNextPreviousLinkAdmin {
 
 		if ( $current_page == 'wpnextpreviouslink' ) {
 
-			wp_register_style( 'wpnextpreviouslink-setting', $css_url_part . 'wpnextpreviouslink-setting.css', [ 'pickr', 'select2', 'awesome-notifications', 'wpnextpreviouslink-admin' ], $this->version, 'all' );
+			wp_register_style( 'wpnextpreviouslink-setting', $css_url_part . 'wpnextpreviouslink-setting.css', [
+				'pickr',
+				'select2',
+				'awesome-notifications',
+				'wpnextpreviouslink-admin'
+			], $this->version, 'all' );
 
 
 			/*wp_enqueue_style( 'wp-color-picker' );
@@ -180,7 +185,7 @@ class WPNextPreviousLinkAdmin {
 		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/vendors/';
 
 		$suffix       = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-		$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash($_GET['page']) ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 
 		wp_register_script( 'jquery-validate', $vendors_url_part . 'jquery-validation/jquery.validate.min.js', [ 'jquery' ], $version, true );
@@ -310,7 +315,7 @@ class WPNextPreviousLinkAdmin {
 	 * @since    1.0.0
 	 */
 	public function admin_pages() {
-		$page = isset( $_GET['page'] ) ? sanitize_text_field(wp_unslash( $_GET['page'] ) ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		//setting menu
 		$hook = add_options_page(
@@ -332,10 +337,16 @@ class WPNextPreviousLinkAdmin {
 
 		if ( $doc ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo wpnextpreviouslink_get_template_html( 'admin/support.php', [ 'admin_ref' => $this, 'settings' => $this->settings ] );
+			echo wpnextpreviouslink_get_template_html( 'admin/support.php', [
+				'admin_ref' => $this,
+				'settings'  => $this->settings
+			] );
 		} else {
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo wpnextpreviouslink_get_template_html( 'admin/settings.php', [ 'admin_ref' => $this, 'settings' => $this->settings ] );
+			echo wpnextpreviouslink_get_template_html( 'admin/settings.php', [
+				'admin_ref' => $this,
+				'settings'  => $this->settings
+			] );
 		}
 	}//end menu_settings
 
@@ -370,7 +381,7 @@ class WPNextPreviousLinkAdmin {
 	/**
 	 * Return the key value pair of post types
 	 *
-	 * @param  type array $all_post_types
+	 * @param type array $all_post_types
 	 *
 	 * @return type array
 	 */
@@ -403,10 +414,10 @@ class WPNextPreviousLinkAdmin {
 	 *
 	 * @access  public
 	 *
-	 * @param  array  $links_array  An array of the plugin's metadata
-	 * @param  string  $plugin_file_name  Path to the plugin file
-	 * @param  array  $plugin_data  An array of plugin data
-	 * @param  string  $status  Status of the plugin
+	 * @param array $links_array An array of the plugin's metadata
+	 * @param string $plugin_file_name Path to the plugin file
+	 * @param array $plugin_data An array of plugin data
+	 * @param string $status Status of the plugin
 	 *
 	 * @return  array       $links_array
 	 */
@@ -468,13 +479,13 @@ class WPNextPreviousLinkAdmin {
 	 *
 	 */
 	public function plugin_upgrader_process_complete() {
-		$saved_version = get_option('wpnextpreviouslink_version');
+		$saved_version = get_option( 'wpnextpreviouslink_version' );
 
-		if ($saved_version === false || version_compare($saved_version , WPNEXTPREVIOUSLINK_VERSION, '<')) {
+		if ( $saved_version === false || version_compare( $saved_version, WPNEXTPREVIOUSLINK_VERSION, '<' ) ) {
 			set_transient( 'wpnextpreviouslink_upgraded_notice', 1 );
 
 			// Update the saved version
-			update_option('wpnextpreviouslink_version', WPNEXTPREVIOUSLINK_VERSION);
+			update_option( 'wpnextpreviouslink_version', WPNEXTPREVIOUSLINK_VERSION );
 		}
 	}//end plugin_upgrader_process_complete
 
@@ -491,9 +502,14 @@ class WPNextPreviousLinkAdmin {
 
 			echo '<div style="border-left-color:#6648fe;" class="notice notice-success is-dismissible">';
 			/* translators: %s. Core plugin's version */
-			echo '<p><img style="float: left; display: inline-block; margin-right: 15px;" src="' . esc_url( WPNEXTPREVIOUSLINK_ROOT_URL  . 'assets/images/icon_48.png') . '" />' . sprintf( wp_kses( __( 'Thanks for installing/deactivating <strong>CBX Next Previous Article</strong> V%s - Codeboxr Team', 'wpnextpreviouslink' ), [ 'strong' => [] ] ), esc_attr( WPNEXTPREVIOUSLINK_VERSION ) ) . '</p>'; //phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
+			echo '<p><img style="float: left; display: inline-block; margin-right: 15px;" src="' . esc_url( WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/images/icon_48.png' ) . '" />' . sprintf( wp_kses( __( 'Thanks for installing/deactivating <strong>CBX Next Previous Article</strong> V%s - Codeboxr Team', 'wpnextpreviouslink' ), [ 'strong' => [] ] ), esc_attr( WPNEXTPREVIOUSLINK_VERSION ) ) . '</p>'; //phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
 			/* translators: 1. Plugin setting url 2. Documentation url */
-			echo '<p>' . sprintf( wp_kses( __( 'Check <a href="%1$s">Plugin Setting</a> | <a target="_blank" href="%2$s" target="_blank">Documentation</a>', 'wpnextpreviouslink' ), [ 'a' => [ 'href' => [], 'target' => [] ] ] ), esc_url( admin_url( 'options-general.php?page=wpnextpreviouslink' ) ), 'https://codeboxr.com/product/show-next-previous-article-for-wordpress?utm_source=clientdashboard&utm_medium=clientclick&utm_campaign=cdwordpress' ) . '</p>';
+			echo '<p>' . sprintf( wp_kses( __( 'Check <a href="%1$s">Plugin Setting</a> | <a target="_blank" href="%2$s" target="_blank">Documentation</a>', 'wpnextpreviouslink' ), [
+					'a' => [
+						'href'   => [],
+						'target' => []
+					]
+				] ), esc_url( admin_url( 'options-general.php?page=wpnextpreviouslink' ) ), 'https://codeboxr.com/product/show-next-previous-article-for-wordpress?utm_source=clientdashboard&utm_medium=clientclick&utm_campaign=cdwordpress' ) . '</p>';
 			echo '</div>';
 
 
@@ -506,12 +522,17 @@ class WPNextPreviousLinkAdmin {
 
 		// Check the transient to see if we've just activated the plugin
 		if ( get_transient( 'wpnextpreviouslink_upgraded_notice' ) ) {
-			if(!$activation_notice_shown){
+			if ( ! $activation_notice_shown ) {
 				echo '<div style="border-left-color:#6648fe;" class="notice notice-success is-dismissible">';
 				/* translators: %s. Core plugin's version */
-				echo '<p><img style="float: left; display: inline-block; margin-right: 15px;" src="' . esc_url( WPNEXTPREVIOUSLINK_ROOT_URL  . 'assets/images/icon_48.png') . '" />' . sprintf( wp_kses( __( 'Thanks for upgrading <strong>CBX Next Previous Article</strong> V%s , enjoy the new features and bug fixes - Codeboxr Team', 'wpnextpreviouslink' ), [ 'strong' => [] ] ), esc_attr( WPNEXTPREVIOUSLINK_VERSION ) ) . '</p>'; //phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
+				echo '<p><img style="float: left; display: inline-block; margin-right: 15px;" src="' . esc_url( WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/images/icon_48.png' ) . '" />' . sprintf( wp_kses( __( 'Thanks for upgrading <strong>CBX Next Previous Article</strong> V%s , enjoy the new features and bug fixes - Codeboxr Team', 'wpnextpreviouslink' ), [ 'strong' => [] ] ), esc_attr( WPNEXTPREVIOUSLINK_VERSION ) ) . '</p>'; //phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
 				/* translators: 1. Plugin setting url 2. Documentation url */
-				echo '<p>' . sprintf( wp_kses( __( 'Check <a href="%1$s">Plugin Setting</a> | <a target="_blank" href="%2$s" target="_blank">Documentation</a>', 'wpnextpreviouslink' ), [ 'a' => [ 'href' => [], 'target' => [] ] ] ), esc_url( admin_url( 'options-general.php?page=wpnextpreviouslink' ) ), 'https://codeboxr.com/product/show-next-previous-article-for-wordpress?utm_source=clientdashboard&utm_medium=clientclick&utm_campaign=cdwordpress' ) . '</p>';
+				echo '<p>' . sprintf( wp_kses( __( 'Check <a href="%1$s">Plugin Setting</a> | <a target="_blank" href="%2$s" target="_blank">Documentation</a>', 'wpnextpreviouslink' ), [
+						'a' => [
+							'href'   => [],
+							'target' => []
+						]
+					] ), esc_url( admin_url( 'options-general.php?page=wpnextpreviouslink' ) ), 'https://codeboxr.com/product/show-next-previous-article-for-wordpress?utm_source=clientdashboard&utm_medium=clientclick&utm_campaign=cdwordpress' ) . '</p>';
 				echo '</div>';
 
 				$this->pro_addon_compatibility_campaign();
@@ -540,12 +561,22 @@ class WPNextPreviousLinkAdmin {
 				echo '<div style="border-left-color:#6648fe;" class="notice notice-success is-dismissible">';
 				echo '<p>' . esc_html__( 'CBX Next Previous Article Pro Addon V2.0.4 or later required to work with the current version core plugin  CBX Next Previous Article.', 'wpnextpreviouslink' ) . '</p>';
 				/* translators: %s. Pro addon external link */
-				echo '<p>' . sprintf( wp_kses( __( 'Please update <a target="_blank" href="%s">CBX Next Previous Article Pro Addon</a> to version 2.0.4 or later  - Codeboxr Team', 'wpnextpreviouslink' ), [ 'a' => [ 'href' => [], 'target' => [] ] ] ), 'https://codeboxr.com/product/show-next-previous-article-for-wordpress?utm_source=clientdashboard&utm_medium=clientclick&utm_campaign=cdwordpress' ) . '</p>';
+				echo '<p>' . sprintf( wp_kses( __( 'Please update <a target="_blank" href="%s">CBX Next Previous Article Pro Addon</a> to version 2.0.4 or later  - Codeboxr Team', 'wpnextpreviouslink' ), [
+						'a' => [
+							'href'   => [],
+							'target' => []
+						]
+					] ), 'https://codeboxr.com/product/show-next-previous-article-for-wordpress?utm_source=clientdashboard&utm_medium=clientclick&utm_campaign=cdwordpress' ) . '</p>';
 				echo '</div>';
 			}
 		} else {
 			/* translators: %s. Pro addon external link */
-			echo '<div style="border-left-color:#6648fe;" class="notice notice-success is-dismissible"><p>' . sprintf( wp_kses( __( '<a target="_blank" href="%s">CBX Next Previous Article Pro Addon</a> has extended features and settings. try it  - Codeboxr Team', 'wpnextpreviouslink' ), [ 'a' => [ 'href' => [], 'target' => [] ] ] ), 'https://codeboxr.com/product/show-next-previous-article-for-wordpress?utm_source=clientdashboard&utm_medium=clientclick&utm_campaign=cdwordpress' ) . '</p></div>';
+			echo '<div style="border-left-color:#6648fe;" class="notice notice-success is-dismissible"><p>' . sprintf( wp_kses( __( '<a target="_blank" href="%s">CBX Next Previous Article Pro Addon</a> has extended features and settings. try it  - Codeboxr Team', 'wpnextpreviouslink' ), [
+					'a' => [
+						'href'   => [],
+						'target' => []
+					]
+				] ), 'https://codeboxr.com/product/show-next-previous-article-for-wordpress?utm_source=clientdashboard&utm_medium=clientclick&utm_campaign=cdwordpress' ) . '</p></div>';
 		}
 	}//end pro_addon_compatibility_campaign
 
@@ -558,26 +589,42 @@ class WPNextPreviousLinkAdmin {
 	 *
 	 * @return void
 	 */
-	public function custom_message_after_plugin_row_proaddon($plugin_file, $plugin_data){
+	public function custom_message_after_plugin_row_proaddon( $plugin_file, $plugin_data ) {
 		if ( $plugin_file !== 'wpnextpreviouslinkaddon/wpnextpreviouslinkaddon.php' ) {
 			return;
 		}
 
-		if(defined('WPNEXTPREVIOUSLINKADDON_VERSION')) return;
-
-		$pro_addon_version = WPNextPreviousLinkHelper::get_any_plugin_version('wpnextpreviouslinkaddon/wpnextpreviouslinkaddon.php');
-
-		$pro_latest_version  = '2.0.7';
-
-		if($pro_addon_version != '' && version_compare( $pro_addon_version, $pro_latest_version, '<' ) ){
-			// Custom message to display
 
 
+		$pro_addon_version = WPNextPreviousLinkHelper::get_any_plugin_version( 'wpnextpreviouslinkaddon/wpnextpreviouslinkaddon.php' );
+		$compared_version = '2.0.8';
+		$need_update        = false;
+
+		if ( defined( 'WPNEXTPREVIOUSLINKADDON_VERSION' ) ) {
+			//of pro addon is too old and doesn't have the update checker implemented
+			if(version_compare( $pro_addon_version, '2.0.7', '<' )){
+				$compared_version = '2.0.7';
+				$need_update = true;
+			}
+		}
+		else{
+			if ( $pro_addon_version != '' && version_compare( $pro_addon_version, $compared_version, '<' ) ) {
+				$need_update = true;
+			}
+		}
+
+
+		if ( $need_update) {
 			$plugin_manual_update = 'https://codeboxr.com/manual-update-pro-addon/';
 
-
 			/* translators:translators: %s: plugin setting url for licence */
-			$custom_message     = wp_kses(sprintf( __( '<strong>Note:</strong> CBX Next Previous Article Pro Addon is custom plugin. This plugin can not be auto update from dashboard/plugin manager. For manual update please check <a target="_blank" href="%1$s">documentation</a>. <strong style="color: red;">It seems this plugin\'s current version is older than %2$s . To get the latest pro addon features, this plugin needs to upgrade to %2$s or later.</strong>', 'wpnextpreviouslink' ), esc_url( $plugin_manual_update ), $pro_latest_version ), ['strong' => ['style' => []],'a' => ['href' => [], 'target' => []]]);
+			$custom_message = wp_kses( sprintf( __( '<strong>Note:</strong> CBX Next Previous Article Pro Addon is custom plugin. This plugin can not be auto update from dashboard/plugin manager. For manual update please check <a target="_blank" href="%1$s">documentation</a>. <strong style="color: red;">It seems this plugin\'s current version is older than %2$s . To get the latest pro addon features, this plugin needs to upgrade to %2$s or later.</strong>', 'wpnextpreviouslink' ), esc_url( $plugin_manual_update ), $compared_version ), [
+				'strong' => [ 'style' => [] ],
+				'a'      => [
+					'href'   => [],
+					'target' => []
+				]
+			] );
 
 			// Output a row with custom content
 			echo '<tr class="plugin-update-tr">
@@ -596,7 +643,7 @@ class WPNextPreviousLinkAdmin {
 	 * @return void
 	 * @since 2.7.1
 	 */
-	public function settings_reset_load(){
+	public function settings_reset_load() {
 		//security check
 		check_ajax_referer( 'settingsnonce', 'security' );
 

@@ -66,7 +66,7 @@ function wpnextpreviouslink_get_template( $template_name, $args = [], $template_
 
 	if ( ! file_exists( $located ) ) {
 		/* translators: %s template */
-		wc_doing_it_wrong( __FUNCTION__, sprintf( __( '%s does not exist.', 'wpnextpreviouslink' ), '<code>' . $located . '</code>' ), '1.0.0' );
+		wpnextpreviouslink_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( '%s does not exist.', 'wpnextpreviouslink' ), '<code>' . $located . '</code>' ), '2.7.4' );
 
 		return;
 	}

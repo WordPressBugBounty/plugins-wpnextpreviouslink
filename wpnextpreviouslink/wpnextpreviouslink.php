@@ -8,7 +8,7 @@
  * Plugin Name:       CBX Next Previous Article
  * Plugin URI:        https://codeboxr.com/product/show-next-previous-article-for-wordpress
  * Description:       WordPress Next Previous Article/Link
- * Version:           2.7.3
+ * Version:           2.7.4
  * Author:            Codeboxr Team
  * Author URI:        https://codeboxr.com
  * License:           GPL-2.0+
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-defined( 'WPNEXTPREVIOUSLINK_VERSION' ) or define( 'WPNEXTPREVIOUSLINK_VERSION', '2.7.3' );
+defined( 'WPNEXTPREVIOUSLINK_VERSION' ) or define( 'WPNEXTPREVIOUSLINK_VERSION', '2.7.4' );
 defined( 'WPNEXTPREVIOUSLINK_PLUGIN_NAME' ) or define( 'WPNEXTPREVIOUSLINK_PLUGIN_NAME', 'wpnextpreviouslink' );
 defined( 'WPNEXTPREVIOUSLINK_ROOT_PATH' ) or define( 'WPNEXTPREVIOUSLINK_ROOT_PATH', plugin_dir_path( __FILE__ ) );
 defined( 'WPNEXTPREVIOUSLINK_ROOT_URL' ) or define( 'WPNEXTPREVIOUSLINK_ROOT_URL', plugin_dir_url( __FILE__ ) );
