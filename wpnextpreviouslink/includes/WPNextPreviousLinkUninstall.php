@@ -4,26 +4,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
 /**
- * Fired during plugin uninstallation
- *
- * @link       https://codeboxr.com
- * @since      1.0.0
- *
- * @package    WPNextPreviousLink
- * @subpackage WPNextPreviousLink/includes
- */
-
-/**
- * Fired during plugin uninstallation.
- *
- * This class defines all code necessary to run during the plugin's deactivation.
- *
- * @since      1.0.0
- * @package    WPNextPreviousLink
- * @subpackage WPNextPreviousLink/includes
- * @author     codeboxr <info@codeboxr.com>
+ * Class WPNextPreviousLinkUninstall
  */
 class WPNextPreviousLinkUninstall {
 	/**

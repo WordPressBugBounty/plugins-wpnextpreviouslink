@@ -2,8 +2,8 @@
 Contributors: codeboxr,manchumahara
 Tags: next prev,navigation,
 Requires at least: 5.3
-Tested up to: 6.7.1
-Stable tag: 2.7.4
+Tested up to: 6.8
+Stable tag: 2.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,11 @@ e.g.
 
 
 == Changelog ==
+= 2.7.5 =
+* [updated] Code revamped
+* [updated] Compatible with WordPress 6.8
+* [updated] Compatible with Pro Addon Plugin 2.0.9
+
 = 2.7.4 =
 * [added] Added some new helper functions and minor improvements
 
@@ -81,53 +86,3 @@ e.g.
 * [new] Skip next prev for specific post/page id(s) - Request in wp.org support https://wordpress.org/support/topic/hide-on-few-pages/
 * [new] Post 'order by' per post basis (in core only date)
 * [new] Plugin check plugin used to check standard errors and warnings and fixed
-
-= 2.7.1 =
-* [improvement] Settings reset and import improved that is related with pro addon also
-* [new] New documentation page
-* [new] PHP 8.2 compatible
-* [updated] Dashboard style improved
-* [updated] Pro addon updated and new version 2.0.5 released
-* [new] Added woocommerce like template system for different views which can be overrode using plugin and theme
-
-= 2.7.0 =
-* [new] Settings Input fields checkbox and radio buttons style improved
-* [new] Settings dashboard revamped & improved
-* [update] Related pro addon V2.0.4 released
-* [new] Z-index for next prev arrow for better dynamic control from plugin's setting page
-* [new] New setting section added in plugin's global setting named "Tools" that helps to reset the plugin's setting to default
-
-= 2.6.6 =
-* [new] Extra filter hooks added in core
-* [new] New features in pro addon [looping next prev for single article]
-
-= 2.6.5 =
-* [new] Compatible with 6.1.1
-* [new] Style and other minor improvements
-
-= 2.6.4 =
-
-* [Updated] Dashboard more updated with left side tab in larger screen and tab at top in smaller screen
-* [new] Navigate by category now has option per post type category or taxonomy set option, so now it works for custom post types with custom taxonomy.
-
-
-= 2.6.3 =
-
-* [Updated] New dashboard interface
-
-= 2.6.2 =
-
-* [updated] Click works if ga enabled for advance display mode.
-
-= 2.6.1 =
-
-* [new] Google analytics tracking of show/view and click event for next prev for single page
-* [new] Link open in new window/tab or not , default same window
-* [fix] Works perfectly for single page as frontpage as home page
-* [fix] Home Page always display arrow style
-* [improvement] Plugin setting style improved with relevance information and ux
-
-= 2.6.0 =
-
-* [improvement] Performance improvement
-* [new] Navigate by category id off by default, this will give better default experience after the plugin install and activate

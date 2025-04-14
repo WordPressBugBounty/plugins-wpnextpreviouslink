@@ -452,8 +452,8 @@
                 $('.wpnpcustomimg').addClass('hidden');
                 $('.wpnpaddon_custom_img').addClass('hidden');
 
-                $('#wpnp_previousimg').attr('src', wpnp.image_url + 'l_' + imagename + '.png');
-                $('#wpnp_nextimg').attr('src', wpnp.image_url + 'r_' + imagename + '.png');
+                $('#wpnp_previousimg').attr('src', wpnextpreviouslink_settings_vars.image_url + 'l_' + imagename + '.png');
+                $('#wpnp_nextimg').attr('src', wpnextpreviouslink_settings_vars.image_url + 'r_' + imagename + '.png');
             }
         });
 

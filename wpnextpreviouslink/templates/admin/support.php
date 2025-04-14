@@ -9,6 +9,7 @@
  * @package    wpnextpreviouslink
  * @subpackage wpnextpreviouslink/templates/admin
  */
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -17,7 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
 $plugin_url = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/product/show-next-previous-article-for-wordpress' );
 $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpnextpreviouslink-doc/' );
 ?>
-<div class="cbx-chota wpnextpreviouslink-page-wrapper wpnextpreviouslink-support-wrapper" id="wpnextpreviouslink-support">
+<div class="cbx-chota wpnextpreviouslink-page-wrapper wpnextpreviouslink-support-wrapper"
+     id="wpnextpreviouslink-support">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -33,7 +35,8 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
                     </div>
                     <div class="wp-heading-wrap-right  pull-right">
 						<?php do_action( 'wpnextpreviouslink_wpheading_wrap_right_before', 'support' ); ?>
-                        <a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpnextpreviouslink' ) ); ?>" class="button outline primary"><?php esc_html_e( 'Global Settings', 'wpnextpreviouslink' ); ?></a>
+                        <a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpnextpreviouslink' ) ); ?>"
+                           class="button outline primary"><?php esc_html_e( 'Global Settings', 'wpnextpreviouslink' ); ?></a>
 						<?php do_action( 'wpnextpreviouslink_wpheading_wrap_right_after', 'support' ); ?>
                     </div>
                 </div>
@@ -57,15 +60,16 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
                                     <div class="feature-card-body static">
                                         <div class="feature-card-header">
                                             <a href="<?php echo esc_url( $plugin_url ); ?>" target="_blank">
-                                                <?php //phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  ?>
-                                                <img src="<?php echo esc_url('https://codeboxr.com/wp-content/uploads/productshots/8167-profile.webp'); ?>"
+												<?php //phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  ?>
+                                                <img src="<?php echo esc_url( 'https://codeboxr.com/wp-content/uploads/productshots/8167-profile.webp' ); ?>"
                                                      alt="CBX Next Previous Article for WordPress"/>
                                             </a>
 
                                         </div>
                                         <div class="feature-card-description">
                                             <h3>
-                                                <a href="<?php echo esc_url( $plugin_url ); ?>" target="_blank">CBX Next Previous Pro Addon</a>
+                                                <a href="<?php echo esc_url( $plugin_url ); ?>" target="_blank">CBX Next
+                                                    Previous Pro Addon</a>
                                             </h3>
                                             <p>Pro features for CBX Next Previous plugin</p>
                                         </div>
@@ -85,6 +89,24 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
                     <div class="content">
                         <div class="cbx-backend-settings-row">
                             <p>
+                                Version - 2.7.5
+                            </p>
+                            <ul>
+                                <li>[updated] Code revamped</li>
+                                <li>[updated] Compatible with WordPress 6.8</li>
+                                <li>[updated] Compatible with Pro Addon Plugin 2.0.9</li>
+                            </ul>
+                        </div>
+                        <div class="cbx-backend-settings-row">
+                            <p>
+                                Version - 2.7.4
+                            </p>
+                            <ul>
+                                <li>[added] Added some new helper functions and minor improvements</li>
+                            </ul>
+                        </div>
+                        <div class="cbx-backend-settings-row">
+                            <p>
                                 Version - 2.7.3
                             </p>
                             <ul>
@@ -93,40 +115,6 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
                                 <li>[updated] Dashboard style improvement</li>
                                 <li>[new] SVG icon added everywhere</li>
                                 <li>[updated] Pro Addon V2.0.7 released</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 2.7.2
-                            </p>
-                            <ul>
-                                <li>[new] Skip next prev for specific post/page id(s) - Request in wp.org support https://wordpress.org/support/topic/hide-on-few-pages/</li>
-                                <li>[new] Post 'order by' per post basis (in core only date)</li>
-                                <li>[new] Plugin check plugin used to check standard errors and warnings and fixed</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 2.7.1
-                            </p>
-                            <ul>
-                                <li>[improvement] Settings reset and import improved that is related with pro addon also</li>
-                                <li>[new] New documentation page</li>
-                                <li>[updated] Dashboard style improved</li>
-                                <li>[new] PHP 8.2 compatible</li>
-                                <li>[new] Added woocommerce like template system for different views which can be overrode using plugin and theme</li>
-                                <li>[updated] Pro addon updated and new version 2.0.5 released</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 2.7.0
-                            </p>
-                            <ul>
-                                <li>[new] Settings Input fields checkbox and radio buttons style improved</li>
-                                <li>[new] Settings dashboard revamped & improved</li>
-                                <li>[update] Related pro addon V2.0.4 released</li>
-                                <li>[new] Z-index for next prev arrow for better dynamic control from plugin's setting page</li>
                             </ul>
                         </div>
                     </div>
@@ -140,6 +128,24 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
                     <div class="content">
                         <div class="cbx-backend-settings-row">
                             <p>
+                                Version - 2.0.9
+                            </p>
+                            <ul>
+                                <li>[updated] Code revamped</li>
+                                <li>[updated] Compatible with WordPress 6.8</li>
+                                <li>[updated] Compatible with Core Plugin 2.7.5</li>
+                            </ul>
+                        </div>
+                        <div class="cbx-backend-settings-row">
+                            <p>
+                                Version - 2.0.8
+                            </p>
+                            <ul>
+                                <li>[added] Added some new helper functions and minor improvements</li>
+                            </ul>
+                        </div>
+                        <div class="cbx-backend-settings-row">
+                            <p>
                                 Version - 2.0.7
                             </p>
                             <ul>
@@ -147,27 +153,7 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
                                 <li>[new] Plugin check version V1.3.1 compatible</li>
                                 <li>[updated] WordPress core V6.7.1 compatible</li>
                                 <li>[new] SVG icon added everywhere</li>
-                                <li>[Updated] Core plugin V2.7.3 released</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 2.0.6
-                            </p>
-                            <ul>
-                                <li>[new] Added custom menu order as Post 'order by' per post basis</li>
-                                <li>[new] Added custom menu order for custom post type</li>
-                                <li>[new] Plugin check plugin used to check standard errors and warnings and fixed</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 2.0.5
-                            </p>
-                            <ul>
-                                <li>[new] Single setting export/import</li>
-                                <li>[new] Reset single setting</li>
-                                <li>[new] PHP 8.2 compatibility checked</li>
+                                <li>[updated] Core plugin V2.7.3 released</li>
                             </ul>
                         </div>
                     </div>
@@ -201,12 +187,14 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
 								<?php esc_html_e( 'Documentation & User Guide', 'wpnextpreviouslink' ); ?> </a>
                         </div>
                         <div class="cbx-backend-settings-row">
-                            <a href="https://wordpress.org/support/plugin/wpnextpreviouslink/reviews/#new-post" target="_blank">
+                            <a href="https://wordpress.org/support/plugin/wpnextpreviouslink/reviews/#new-post"
+                               target="_blank">
                                 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18.3 8.1c-.1-.3-.3-.5-.6-.5l-4.8-.7-2.2-4.4c-.1-.3-.4-.4-.7-.4-.3 0-.5.2-.7.4L7.2 6.9l-4.9.7c-.3 0-.5.2-.6.5-.1.3 0 .6.2.8l3.5 3.4-.8 4.7c0 .3.1.6.3.7.1.1.3.1.4.1.1 0 .2 0 .4-.1l4.3-2.3 4.3 2.3c.1.1.2.1.4.1.4 0 .8-.3.8-.8v-.2l-.8-4.8 3.5-3.4c.1 0 .2-.3.1-.5z"
                                           fill="currentColor"/>
                                 </svg>
-								<?php esc_html_e( 'Review & Rate CBX Next Previous Article', 'wpnextpreviouslink' ); ?> </a>
+								<?php esc_html_e( 'Review & Rate CBX Next Previous Article', 'wpnextpreviouslink' ); ?>
+                            </a>
                         </div>
                         <div class="cbx-backend-settings-row">
                             <a href="https://wordpress.org/support/plugin/wpnextpreviouslink/" target="_blank">
@@ -246,11 +234,11 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
 							'https://codeboxr.com/product/cbx-currency-converter-for-wordpress/'                  => 'CBX Currency Converter',
 							'https://codeboxr.com/product/cbx-email-logger-for-wordpress/'                        => 'CBX Email SMTP & Logger',
 							'https://codeboxr.com/product/cbx-petition-for-wordpress/'                            => 'CBX Petition',
-							'https://codeboxr.com/product/cbx-accounting/'                                        => 'CBX Accounting',
+							//'https://codeboxr.com/product/cbx-accounting/'                                        => 'CBX Accounting',
 							'https://codeboxr.com/product/cbx-poll-for-wordpress/'                                => 'CBX Poll',
 							'https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/'        => 'CBX Multi Criteria Rating & Review',
 							'https://codeboxr.com/product/cbx-user-online-for-wordpress/'                         => 'CBX User Online & Last Login',
-							'https://codeboxr.com/product/woocommerce-product-dropdown-field-for-contact-form7/'  => 'Woocommerce Product Dropdown field for Contact Form7',
+							//'https://codeboxr.com/product/woocommerce-product-dropdown-field-for-contact-form7/'  => 'Woocommerce Product Dropdown field for Contact Form7',
 						];
 
 						foreach ( $top_plugins as $link => $title ) {
@@ -275,36 +263,26 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
                     </div>
                     <div class="content">
 						<?php
+						$items = WPNextPreviousLinkHelper::codeboxr_news_feed();
+						if ( $items !== false && count( $items ) > 0 ) {
+							foreach ( $items as $item ) {
+								$url   = $item['url'];
+								$title = $item['title'];
 
-						include_once( ABSPATH . WPINC . '/feed.php' );
-						if ( function_exists( 'fetch_feed' ) ) {
-							//$feed = fetch_feed( 'https://codeboxr.com/feed?post_type=product' );
-							$feed = fetch_feed( 'https://codeboxr.com/feed?post_type=post' );
-							if ( ! is_wp_error( $feed ) ) : $feed->init();
-								$feed->set_output_encoding( 'UTF-8' );     // this is the encoding parameter, and can be left unchanged in almost every case
-								$feed->handle_content_type();              // this double-checks the encoding type
-								$feed->set_cache_duration( 21600 );        // 21,600 seconds is six hours
-								$limit = $feed->get_item_quantity( 10 );   // fetches the 18 most recent RSS feed stories
-								$items = $feed->get_items( 0, $limit );    // this sets the limit and array for parsing the feed
-
-								$blocks = array_slice( $items, 0, 10 );
-
-								foreach ( $blocks as $block ) {
-									$url = $block->get_permalink();
-									$url = WPNextPreviousLinkHelper::url_utmy( $url ); ?>
-                                    <div class="cbx-backend-settings-row">
-                                        <a href="<?php echo esc_url( $url ); ?>" target="_blank">
-                                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+								echo '<div class="cbx-backend-settings-row">';
+								echo '<a href="' . esc_url( $url ) . '" target="_blank">';
+								echo '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                                 <defs/>
                                                 <path d="M16.4 9.1L12.2 5c-.3-.3-.7-.3-1-.2s-.6.5-.6.9v1.7H4.2c-.5 0-.9.4-.9.9v3.4c0 .2.1.5.3.7.2.2.4.3.7.3h6.4v1.7c0 .4.2.7.6.9.4.1.8.1 1-.2l4.1-4.2c.4-.5.4-1.3 0-1.8z"
                                                       fill="currentColor"/>
-                                            </svg>
-											<?php echo esc_attr( $block->get_title() ); ?></a>
-                                    </div>
-									<?php
-								}//end foreach
-							endif;
-						}
+                                            </svg>';
+
+								//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+								echo $title;
+								echo '</a>';
+								echo '</div>';
+							}//end for loop
+						}//if data found
 						?>
                     </div>
                 </div>

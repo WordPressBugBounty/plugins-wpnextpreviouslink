@@ -1,16 +1,7 @@
 <?php
 
 /**
- * The public-facing functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @link       https://codeboxr.com
- * @since      1.0.0
- * @package    WPNextPreviousLink
- * @subpackage WPNextPreviousLink/includes
- * @author     Codeboxr <info@codeboxr.com>
+ * Class WPNextPreviousLinkPublic
  */
 class WPNextPreviousLinkPublic {
 	/**
@@ -37,8 +28,8 @@ class WPNextPreviousLinkPublic {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @param  string  $plugin_name  The name of the plugin.
-	 * @param  string  $version  The version of this plugin.
+	 * @param string $plugin_name The name of the plugin.
+	 * @param string $version The version of this plugin.
 	 *
 	 * @since    1.0.0
 	 */
@@ -59,15 +50,20 @@ class WPNextPreviousLinkPublic {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
+		$t         = true;
+		$f         = false;
+		$in_footer = [ 'in_footer' => $t ];
+		$ver       = $this->version;
+
 		$css_url_part     = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/css/';
 		$js_url_part      = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/js/';
 		$vendors_url_part = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/vendors/';
 
-		$css_path_part     = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/css/';
-		$js_path_part      = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/js/';
-		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/vendors/';
+		$css_path_part     = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/css/';
+		$js_path_part      = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/js/';
+		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/vendors/';
 
-		wp_register_style( 'wpnextpreviouslink-public', $css_url_part . 'wpnextpreviouslink-public.css', [], $this->version, 'all' );
+		wp_register_style( 'wpnextpreviouslink-public', $css_url_part . 'wpnextpreviouslink-public.css', [], $ver, 'all' );
 		wp_enqueue_style( 'wpnextpreviouslink-public' );
 	}//end enqueue_styles
 
@@ -77,13 +73,18 @@ class WPNextPreviousLinkPublic {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
+		$t         = true;
+		$f         = false;
+		$in_footer = [ 'in_footer' => $t ];
+		$ver       = $this->version;
+
 		$css_url_part     = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/css/';
 		$js_url_part      = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/js/';
 		$vendors_url_part = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/vendors/';
 
-		$css_path_part     = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/css/';
-		$js_path_part      = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/js/';
-		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/vendors/';
+		$css_path_part     = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/css/';
+		$js_path_part      = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/js/';
+		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/vendors/';
 
 		$settings = $this->settings;
 
@@ -100,7 +101,7 @@ class WPNextPreviousLinkPublic {
 		];
 
 
-		wp_register_script( 'wpnextpreviouslink-public', $js_url_part . 'wpnextpreviouslink-public.js', [ 'jquery' ], $this->version, true );
+		wp_register_script( 'wpnextpreviouslink-public', $js_url_part . 'wpnextpreviouslink-public.js', [ 'jquery' ], $ver, $in_footer );
 		wp_localize_script( 'wpnextpreviouslink-public', 'wpnextpreviouslink_public', apply_filters( 'wpnextpreviouslink_public_vars', $translation_public_vars ) );
 		//wp_enqueue_script( 'wpnextpreviouslink-public' );
 	}//end method enqueue_scripts
@@ -153,16 +154,16 @@ class WPNextPreviousLinkPublic {
 
 
 		//for showing different type of arrow in front end
-		$left_image = plugins_url( 'assets/images/l_' . $settings->get_field( 'wpnp_image_name', 'wpnextpreviouslink_basics', 'arrow' ) . '.png', dirname( __FILE__ ) );
+		$left_image = WPNEXTPREVIOUSLINK_ROOT_URL. 'assets/images/l_' . $settings->get_field( 'wpnp_image_name', 'wpnextpreviouslink_basics', 'arrow' ) . '.png';
 		$left_image = apply_filters( 'wpnp_showleftimg', $left_image, $image_name );
 
-		$left_image_hover = plugins_url( 'assets/images/l_' . $settings->get_field( 'wpnp_image_name', 'wpnextpreviouslink_basics', 'arrow' ) . '_hover.png', dirname( __FILE__ ) );
+		$left_image_hover = WPNEXTPREVIOUSLINK_ROOT_URL. 'assets/images/l_' . $settings->get_field( 'wpnp_image_name', 'wpnextpreviouslink_basics', 'arrow' ) . '_hover.png';
 		$left_image_hover = apply_filters( 'wpnp_showleftimg_hover', $left_image_hover, $image_name );
 
-		$right_image = plugins_url( 'assets/images/r_' . $settings->get_field( 'wpnp_image_name', 'wpnextpreviouslink_basics', 'arrow' ) . '.png', dirname( __FILE__ ) );
+		$right_image = WPNEXTPREVIOUSLINK_ROOT_URL. 'assets/images/r_' . $settings->get_field( 'wpnp_image_name', 'wpnextpreviouslink_basics', 'arrow' ) . '.png';
 		$right_image = apply_filters( 'wpnp_showrightimg', $right_image, $image_name );
 
-		$right_image_hover = plugins_url( 'assets/images/r_' . $settings->get_field( 'wpnp_image_name', 'wpnextpreviouslink_basics', 'arrow' ) . '_hover.png', dirname( __FILE__ ) );
+		$right_image_hover = WPNEXTPREVIOUSLINK_ROOT_URL. 'assets/images/r_' . $settings->get_field( 'wpnp_image_name', 'wpnextpreviouslink_basics', 'arrow' ) . '_hover.png';
 		$right_image_hover = apply_filters( 'wpnp_showrightimg_hover', $right_image_hover, $image_name );
 
 
@@ -260,8 +261,14 @@ class WPNextPreviousLinkPublic {
 
 		//for details
 		if ( $this->is_page_front_page() || is_singular() ) {
-			$post_types_to_show = $settings->get_field( 'wpnp_show_posttypes', 'wpnextpreviouslink_basics', [ 'post', 'page', 'attachment' ] );
-			if(!is_array($post_types_to_show)) $post_types_to_show = [];
+			$post_types_to_show = $settings->get_field( 'wpnp_show_posttypes', 'wpnextpreviouslink_basics', [
+				'post',
+				'page',
+				'attachment'
+			] );
+			if ( ! is_array( $post_types_to_show ) ) {
+				$post_types_to_show = [];
+			}
 
 			//if show both next prev for single
 			if ( $show_both_in_single ) {
@@ -379,14 +386,14 @@ class WPNextPreviousLinkPublic {
 	/**
 	 * Adjust the next previous link with new window option and id, class etc html functionality
 	 *
-	 * @param  string  $link_html
-	 * @param  string  $next_prev
-	 * @param  bool  $new_window
+	 * @param string $link_html
+	 * @param string $next_prev
+	 * @param bool $new_window
 	 *
 	 * @return string
 	 */
 	public function adjust_link_html( $link_html = '', $next_prev = 'next', $new_window = false ) {
-		$extra_html = ' id="wpnp_' . esc_attr($next_prev) . '_anchor" class="wpnp_anchor_js" ';
+		$extra_html = ' id="wpnp_' . esc_attr( $next_prev ) . '_anchor" class="wpnp_anchor_js" ';
 
 		if ( $new_window ) {
 			$extra_html .= ' target="blank" ';

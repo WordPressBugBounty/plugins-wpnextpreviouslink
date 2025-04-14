@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-19 11:29+0000\n"
+"POT-Creation-Date: 2025-04-14 20:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,13 +15,13 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/"
 
 #. %s template
-#: includes/wpnextpreviouslink-tpl-loader.php:69
+#: includes/Functions/wpnextpreviouslink-tpl-loader.php:110
 #, php-format
 msgid "%s does not exist."
 msgstr ""
 
 #. %s. Pro addon external link
-#: includes/WPNextPreviousLinkAdmin.php:548
+#: includes/WPNextPreviousLinkAdmin.php:555
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%s\">CBX Next Previous Article Pro Addon</a> has "
@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 
 #. translators:translators: %s: plugin setting url for licence
-#: includes/WPNextPreviousLinkAdmin.php:580
+#: includes/WPNextPreviousLinkAdmin.php:592
 #, php-format
 msgid ""
 "<strong>Note:</strong> CBX Next Previous Article Pro Addon is custom plugin. "
@@ -40,68 +40,68 @@ msgid ""
 "upgrade to %2$s or later.</strong>"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:906
+#: includes/WPNextPreviousLink_Settings_API.php:904
 msgid "Add New"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:309
+#: includes/Helpers/WPNextPreviousLinkHelper.php:288
 msgid "Archive Display Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:219
+#: includes/WPNextPreviousLinkAdmin.php:223
 msgid "Are you sure to remove all steps?"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:218
+#: includes/WPNextPreviousLinkAdmin.php:222
 msgid "Are you sure to remove this step?"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:222
+#: includes/WPNextPreviousLinkAdmin.php:226
 msgid "Are you sure?"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:464
+#: includes/Helpers/WPNextPreviousLinkHelper.php:443
 msgid "Arrow Preview"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:454
+#: includes/Helpers/WPNextPreviousLinkHelper.php:433
 msgid "Arrow Style"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:455
+#: includes/Helpers/WPNextPreviousLinkHelper.php:434
 msgid "Arrow style of the next prev link."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:447
+#: includes/Helpers/WPNextPreviousLinkHelper.php:426
 msgid "Arrow Style Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:247
+#: includes/WPNextPreviousLinkAdmin.php:251
 msgid "Attention"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:260
+#: includes/Helpers/WPNextPreviousLinkHelper.php:239
 msgid "Basic Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:580
+#: includes/Helpers/WPNextPreviousLinkHelper.php:557
 msgid "Blue"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:122
+#: includes/Helpers/WPNextPreviousLinkHelper.php:103
 msgid "Built in post types"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:231
-#: includes/WPNextPreviousLinkAdmin.php:252
+#: includes/WPNextPreviousLinkAdmin.php:235
+#: includes/WPNextPreviousLinkAdmin.php:256
 msgid "Cancel"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:236
+#: includes/WPNextPreviousLinkAdmin.php:240
 msgid "cancel and close"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:318
+#: includes/WPNextPreviousLinkAdmin.php:322
 msgid "CBX Next Previous"
 msgstr ""
 
@@ -109,76 +109,76 @@ msgstr ""
 msgid "CBX Next Previous Article"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:541
+#: includes/WPNextPreviousLinkAdmin.php:543
 msgid ""
 "CBX Next Previous Article Pro Addon V2.0.4 or later required to work with "
 "the current version core plugin  CBX Next Previous Article."
 msgstr ""
 
-#: templates/admin/support.php:191
+#: templates/admin/support.php:177
 msgid "CBX Next Previous Plugin Details"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:317
+#: includes/WPNextPreviousLinkAdmin.php:321
 msgid "CBX Next Previous Setting"
 msgstr ""
 
-#: templates/admin/support.php:30
+#: templates/admin/support.php:32
 msgid "CBX Next Previous: Support & Docs"
 msgstr ""
 
 #. 1. Plugin setting url 2. Documentation url
-#: includes/WPNextPreviousLinkAdmin.php:496
-#: includes/WPNextPreviousLinkAdmin.php:514
+#: includes/WPNextPreviousLinkAdmin.php:488
+#: includes/WPNextPreviousLinkAdmin.php:511
 #, php-format
 msgid ""
 "Check <a href=\"%1$s\">Plugin Setting</a> | <a target=\"_blank\" "
 "href=\"%2$s\" target=\"_blank\">Documentation</a>"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:487
-#: includes/WPNextPreviousLinkHelper.php:617
+#: includes/WPNextPreviousLink_Settings_API.php:485
+#: includes/Helpers/WPNextPreviousLinkHelper.php:592
 msgid "Check All"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:382
+#: includes/Helpers/WPNextPreviousLinkHelper.php:361
 msgid "Check more option about this feature"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:774
+#: includes/WPNextPreviousLink_Settings_API.php:772
 msgid "Choose Color"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:745
+#: includes/WPNextPreviousLink_Settings_API.php:743
 msgid "Choose File"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:579
+#: includes/Helpers/WPNextPreviousLinkHelper.php:556
 msgid "Classic"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:232
+#: includes/WPNextPreviousLinkAdmin.php:236
 msgid "Clear"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:237
+#: includes/WPNextPreviousLinkAdmin.php:241
 msgid "clear and close"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:215
+#: includes/WPNextPreviousLinkAdmin.php:219
 msgid "Click to copy"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:292
+#: includes/WPNextPreviousLink_Settings_API.php:290
 msgid "Click to show hide"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:61
-#: includes/WPNextPreviousLink.php:88
+#: includes/WPNextPreviousLink.php:83
+#: includes/WPNextPreviousLink_Settings_API.php:57
 msgid "Cloning is forbidden."
 msgstr ""
 
-#: templates/admin/support.php:273
+#: templates/admin/support.php:261
 msgid "Codeboxr News Updates"
 msgstr ""
 
@@ -186,123 +186,123 @@ msgstr ""
 msgid "Codeboxr Team"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:238
+#: includes/WPNextPreviousLinkAdmin.php:242
 msgid "color input field"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:226
+#: includes/WPNextPreviousLinkAdmin.php:230
 msgid "color picker dialog"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:239
+#: includes/WPNextPreviousLinkAdmin.php:243
 msgid "color selection area"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:228
+#: includes/WPNextPreviousLinkAdmin.php:232
 msgid "color swatch"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:250
+#: includes/WPNextPreviousLinkAdmin.php:254
 msgid "Confirmation"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:214
+#: includes/WPNextPreviousLinkAdmin.php:218
 msgid "Copied"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:216
+#: includes/WPNextPreviousLinkAdmin.php:220
 msgid "Copied to clipboard"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:213
+#: includes/WPNextPreviousLinkAdmin.php:217
 msgid "Copy"
 msgstr ""
 
-#: templates/admin/support.php:82
+#: templates/admin/support.php:86
 msgid "Core Plugin Changelog"
 msgstr ""
 
-#: templates/admin/support.php:219
+#: templates/admin/support.php:207
 msgid "Core Plugin Support"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:275
+#: includes/Helpers/WPNextPreviousLinkHelper.php:254
 msgid "CSS style z index value"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:581
+#: includes/Helpers/WPNextPreviousLinkHelper.php:558
 msgid "Dark"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:663
+#: includes/Helpers/WPNextPreviousLinkHelper.php:640
 msgid "Date(default in wordpress core)"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:548
+#: includes/Helpers/WPNextPreviousLinkHelper.php:527
 msgid ""
 "Delete Global Config data and custom table created by this plugin on "
 "uninstall."
 msgstr ""
 
-#: templates/admin/support.php:201
+#: templates/admin/support.php:187
 msgid "Documentation & User Guide"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:519
+#: includes/Helpers/WPNextPreviousLinkHelper.php:498
 msgid "Enable/Disable . Track next prev display views."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:526
+#: includes/Helpers/WPNextPreviousLinkHelper.php:505
 msgid "Enable/Disable. Track next prev link clicks."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:533
+#: includes/Helpers/WPNextPreviousLinkHelper.php:512
 msgid ""
 "Enable/Disable. Turn it on to indicate that the event hit will not be used "
 "in bounce-rate calculation."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:512
+#: includes/Helpers/WPNextPreviousLinkHelper.php:491
 msgid ""
 "Enable/Disable. You must have google analytics added to your website to use "
 "this feature."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:248
+#: includes/WPNextPreviousLinkAdmin.php:252
 msgid "Error"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:616
+#: includes/Helpers/WPNextPreviousLinkHelper.php:591
 msgid ""
 "Following option values created by this plugin(including addon) from "
 "WordPress core option table"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:419
+#: includes/WPNextPreviousLinkAdmin.php:428
 msgid "Free Support"
 msgstr ""
 
-#: templates/admin/support.php:50
+#: templates/admin/support.php:53
 msgid "Get Free & Pro Addons"
 msgstr ""
 
-#: templates/admin/support.php:36
+#: templates/admin/support.php:39
 msgid "Global Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:163
+#: includes/Helpers/WPNextPreviousLinkHelper.php:144
 msgid "Google Analytics"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:511
+#: includes/Helpers/WPNextPreviousLinkHelper.php:490
 msgid "Google Enalytics Trackings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:582
+#: includes/Helpers/WPNextPreviousLinkHelper.php:559
 msgid "Green"
 msgstr ""
 
-#: templates/admin/support.php:180
+#: templates/admin/support.php:166
 msgid "Help & Supports"
 msgstr ""
 
@@ -314,67 +314,71 @@ msgstr ""
 msgid "https://codeboxr.com/product/show-next-previous-article-for-wordpress"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:240
+#: includes/WPNextPreviousLinkAdmin.php:244
 msgid "hue selection slider"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:245
+#: includes/WPNextPreviousLinkAdmin.php:249
 msgid "Info"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:299
+#: includes/Helpers/WPNextPreviousLinkHelper.php:278
 msgid "Link open in same window or new window"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:249
+#: includes/WPNextPreviousLinkAdmin.php:253
 msgid "Loading"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:218
+#: includes/Helpers/WPNextPreviousLinkHelper.php:198
 msgid "Loading ..."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:382
+#: includes/Helpers/WPNextPreviousLinkHelper.php:361
 msgid "Navigate by Category/taxonomy or not. Default \"No\"."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:155
+#: includes/Helpers/WPNextPreviousLinkHelper.php:136
 msgid "Navigate By Taxonomy"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:381
+#: includes/Helpers/WPNextPreviousLinkHelper.php:360
 msgid "Navigate by Taxonomy"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:500
+#: includes/Helpers/WPNextPreviousLinkHelper.php:479
 msgid "Navigation order by post type"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:304
+#: includes/Helpers/WPNextPreviousLinkHelper.php:283
 msgid "New Window/Tab"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:232
+#: includes/Helpers/WPNextPreviousLinkHelper.php:212
 msgid "Next"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:494
+#: includes/Helpers/WPNextPreviousLinkHelper.php:473
 msgid "Next prev order by each post type"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:439
+#: includes/Helpers/WPNextPreviousLinkHelper.php:418
 msgid "Next Prev Style Type"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:468
-msgid "Next Preview Image(Width: 32px, Height: auto)"
+#: includes/Helpers/WPNextPreviousLinkHelper.php:447
+msgid "Next Preview Image"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:605
+#: includes/Helpers/WPNextPreviousLinkHelper.php:447
+msgid "Next Preview Image(Width: 32px, Height: 32px)"
+msgstr ""
+
+#: includes/WPNextPreviousLinkAdmin.php:624
 msgid "Next Previous Link reset setting html loaded successfully"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:629
+#: includes/WPNextPreviousLinkAdmin.php:648
 msgid "Next Previous Link setting reset scheduled successfully"
 msgstr ""
 
@@ -382,339 +386,343 @@ msgstr ""
 msgid "Next Previous: Global Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:221
-#: includes/WPNextPreviousLinkHelper.php:320
-#: includes/WPNextPreviousLinkHelper.php:331
-#: includes/WPNextPreviousLinkHelper.php:342
-#: includes/WPNextPreviousLinkHelper.php:353
-#: includes/WPNextPreviousLinkHelper.php:364
-#: includes/WPNextPreviousLinkHelper.php:375
-#: includes/WPNextPreviousLinkHelper.php:386
-#: includes/WPNextPreviousLinkHelper.php:397
-#: includes/WPNextPreviousLinkHelper.php:433
-#: includes/WPNextPreviousLinkHelper.php:552
+#: includes/WPNextPreviousLinkAdmin.php:225
+#: includes/Helpers/WPNextPreviousLinkHelper.php:299
+#: includes/Helpers/WPNextPreviousLinkHelper.php:310
+#: includes/Helpers/WPNextPreviousLinkHelper.php:321
+#: includes/Helpers/WPNextPreviousLinkHelper.php:332
+#: includes/Helpers/WPNextPreviousLinkHelper.php:343
+#: includes/Helpers/WPNextPreviousLinkHelper.php:354
+#: includes/Helpers/WPNextPreviousLinkHelper.php:365
+#: includes/Helpers/WPNextPreviousLinkHelper.php:376
+#: includes/Helpers/WPNextPreviousLinkHelper.php:412
+#: includes/Helpers/WPNextPreviousLinkHelper.php:531
 msgid "No"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:251
+#: includes/WPNextPreviousLinkAdmin.php:255
 msgid "OK"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:547
+#: includes/Helpers/WPNextPreviousLinkHelper.php:526
 msgid "On Uninstall delete plugin data"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:223
+#: includes/WPNextPreviousLinkAdmin.php:227
 msgid "Once you delete, it's gone forever. You can not revert it back."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:298
+#: includes/Helpers/WPNextPreviousLinkHelper.php:277
 msgid "Open Link Target"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:623
-#: includes/WPNextPreviousLinkHelper.php:645
+#: includes/Helpers/WPNextPreviousLinkHelper.php:598
+#: includes/Helpers/WPNextPreviousLinkHelper.php:620
 msgid "Option ID"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:622
-#: includes/WPNextPreviousLinkHelper.php:644
+#: includes/Helpers/WPNextPreviousLinkHelper.php:597
+#: includes/Helpers/WPNextPreviousLinkHelper.php:619
 msgid "Option Name"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:583
+#: includes/Helpers/WPNextPreviousLinkHelper.php:560
 msgid "Orange"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:159
+#: includes/Helpers/WPNextPreviousLinkHelper.php:140
 msgid "Order By Post Type"
 msgstr ""
 
-#: templates/admin/support.php:236
+#: templates/admin/support.php:224
 msgid "Other WordPress Plugins"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:270
+#: includes/WPNextPreviousLinkAdmin.php:274
 msgid "Please check the captcha."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:260
+#: includes/WPNextPreviousLinkAdmin.php:264
 msgid "Please enter a valid date ( ISO )."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:259
+#: includes/WPNextPreviousLinkAdmin.php:263
 msgid "Please enter a valid date."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:257
+#: includes/WPNextPreviousLinkAdmin.php:261
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:261
+#: includes/WPNextPreviousLinkAdmin.php:265
 msgid "Please enter a valid number."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:258
+#: includes/WPNextPreviousLinkAdmin.php:262
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:266
+#: includes/WPNextPreviousLinkAdmin.php:270
 msgid "Please enter a value between {0} and {1} characters long."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:267
+#: includes/WPNextPreviousLinkAdmin.php:271
 msgid "Please enter a value between {0} and {1}."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:269
+#: includes/WPNextPreviousLinkAdmin.php:273
 msgid "Please enter a value greater than or equal to {0}."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:268
+#: includes/WPNextPreviousLinkAdmin.php:272
 msgid "Please enter a value less than or equal to {0}."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:265
+#: includes/WPNextPreviousLinkAdmin.php:269
 msgid "Please enter at least {0} characters."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:264
+#: includes/WPNextPreviousLinkAdmin.php:268
 msgid "Please enter no more than {0} characters."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:262
+#: includes/WPNextPreviousLinkAdmin.php:266
 msgid "Please enter only digits."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:263
+#: includes/WPNextPreviousLinkAdmin.php:267
 msgid "Please enter the same value again."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:256
+#: includes/WPNextPreviousLinkAdmin.php:260
 msgid "Please fix this field."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:548
+#: includes/Helpers/WPNextPreviousLinkHelper.php:527
 msgid ""
 "Please note that this process can not be undone and it is recommended to "
 "keep full database backup before doing this."
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:587
-#: includes/class-wpnextpreviouslink-setting.php:648
-#: includes/WPNextPreviousLinkAdmin.php:274
+#: includes/WPNextPreviousLinkAdmin.php:278
+#: includes/WPNextPreviousLink_Settings_API.php:585
+#: includes/WPNextPreviousLink_Settings_API.php:646
 msgid "Please Select"
 msgstr ""
 
 #. %s. Pro addon external link
-#: includes/WPNextPreviousLinkAdmin.php:543
+#: includes/WPNextPreviousLinkAdmin.php:545
 #, php-format
 msgid ""
 "Please update <a target=\"_blank\" href=\"%s\">CBX Next Previous Article Pro "
 "Addon</a> to version 2.0.4 or later  - Codeboxr Team"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:151
+#: includes/Helpers/WPNextPreviousLinkHelper.php:132
 msgid "Plugin Options"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:409
-#: includes/WPNextPreviousLinkHelper.php:410
+#: includes/Helpers/WPNextPreviousLinkHelper.php:388
+#: includes/Helpers/WPNextPreviousLinkHelper.php:389
 msgid "Post Type Selection"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:478
+#: includes/Helpers/WPNextPreviousLinkHelper.php:457
 msgid "Post type specific taxonomy navigation"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:484
+#: includes/Helpers/WPNextPreviousLinkHelper.php:463
 msgid "Post Type Taxonomy Bindings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:291
+#: includes/Helpers/WPNextPreviousLinkHelper.php:270
 msgid "Post/page/custom post type ids as comma to skip display the next prev"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:467
-msgid "Prev Preview Image(Width: 32px, Height: auto)"
+#: includes/Helpers/WPNextPreviousLinkHelper.php:446
+msgid "Prev Preview Image"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:532
+#: includes/Helpers/WPNextPreviousLinkHelper.php:446
+msgid "Prev Preview Image(Width: 32px, Height: 32px)"
+msgstr ""
+
+#: includes/Helpers/WPNextPreviousLinkHelper.php:511
 msgid "Prevent Bounce Rate"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:231
+#: includes/Helpers/WPNextPreviousLinkHelper.php:211
 msgid "Previous"
 msgstr ""
 
-#: templates/admin/support.php:137
+#: templates/admin/support.php:125
 msgid "Pro Addon Changelog"
 msgstr ""
 
-#: templates/admin/support.php:229
+#: templates/admin/support.php:217
 msgid "Pro Addon Support"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:424
+#: includes/WPNextPreviousLinkAdmin.php:433
 msgid "Pro Support"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:584
+#: includes/Helpers/WPNextPreviousLinkHelper.php:561
 msgid "Red"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:202
+#: includes/WPNextPreviousLinkAdmin.php:206
 msgid "Request failed, please reload the page."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:558
+#: includes/Helpers/WPNextPreviousLinkHelper.php:537
 msgid "Reset all data"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:559
+#: includes/Helpers/WPNextPreviousLinkHelper.php:538
 msgid "Reset Data"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:559
+#: includes/Helpers/WPNextPreviousLinkHelper.php:538
 msgid "Reset option values and all tables created by this plugin"
 msgstr ""
 
-#: templates/admin/support.php:209
+#: templates/admin/support.php:196
 msgid "Review & Rate CBX Next Previous Article"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:420
+#: includes/WPNextPreviousLinkAdmin.php:429
 msgid "Reviews"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:303
+#: includes/Helpers/WPNextPreviousLinkHelper.php:282
 msgid "Same Window"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:230
+#: includes/WPNextPreviousLinkAdmin.php:234
 msgid "Save"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:235
+#: includes/WPNextPreviousLinkAdmin.php:239
 msgid "save and close"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:1281
+#: includes/WPNextPreviousLink_Settings_API.php:1281
 #: templates/admin/settings.php:42
 msgid "Save Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:277
+#: includes/WPNextPreviousLinkAdmin.php:281
 msgid "Select Media"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:971
+#: includes/WPNextPreviousLink_Settings_API.php:969
 msgid "Select Taxonomy"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:241
+#: includes/WPNextPreviousLinkAdmin.php:245
 msgid "selection slider"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:442
+#: includes/WPNextPreviousLinkAdmin.php:451
 msgid "Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:428
+#: includes/Helpers/WPNextPreviousLinkHelper.php:407
 msgid "Show Both arrow"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:392
+#: includes/Helpers/WPNextPreviousLinkHelper.php:371
 msgid "Show Both arrow in archive"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:393
+#: includes/Helpers/WPNextPreviousLinkHelper.php:372
 msgid "Show both left and right for any archive mode for arrow style"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:429
+#: includes/Helpers/WPNextPreviousLinkHelper.php:408
 msgid "Show both left and right for any details mode for arrow style"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:326
+#: includes/Helpers/WPNextPreviousLinkHelper.php:305
 msgid "Show in Archive"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:327
+#: includes/Helpers/WPNextPreviousLinkHelper.php:306
 msgid ""
 "Show in Archive View(Category, Tag, Author, Date etc) or not. Default \"Yes\""
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:359
+#: includes/Helpers/WPNextPreviousLinkHelper.php:338
 msgid "Show in Author View"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:360
+#: includes/Helpers/WPNextPreviousLinkHelper.php:339
 msgid ""
 "Show in Author View or not. Default \"Yes\".  If hidden for archive view "
 "then hidden for author view."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:337
+#: includes/Helpers/WPNextPreviousLinkHelper.php:316
 msgid "Show in Category View"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:338
+#: includes/Helpers/WPNextPreviousLinkHelper.php:317
 msgid ""
 "Show in Category View or not. Default \"Yes\". If hidden for archive view "
 "then hidden for category view."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:370
+#: includes/Helpers/WPNextPreviousLinkHelper.php:349
 msgid "Show in Date View"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:371
+#: includes/Helpers/WPNextPreviousLinkHelper.php:350
 msgid ""
 "Show in Date View or not. Default \"Yes\".  If hidden for archive view then "
 "hidden for date view."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:315
+#: includes/Helpers/WPNextPreviousLinkHelper.php:294
 msgid "Show in Home page"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:316
+#: includes/Helpers/WPNextPreviousLinkHelper.php:295
 msgid "Show in home page or not. Default \"Yes\""
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:348
+#: includes/Helpers/WPNextPreviousLinkHelper.php:327
 msgid "Show in Tag View"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:349
+#: includes/Helpers/WPNextPreviousLinkHelper.php:328
 msgid ""
 "Show in Tag View or not. Default \"Yes\".  If hidden for archive view then "
 "hidden for tag view."
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:419
+#: includes/Helpers/WPNextPreviousLinkHelper.php:398
 msgid "Show Post"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:420
+#: includes/Helpers/WPNextPreviousLinkHelper.php:399
 msgid "Show which post to be appeared"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:403
+#: includes/Helpers/WPNextPreviousLinkHelper.php:382
 msgid "Single Article Display Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:290
+#: includes/Helpers/WPNextPreviousLinkHelper.php:269
 msgid "Skip Posts"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:609
-#: includes/WPNextPreviousLinkAdmin.php:634
+#: includes/WPNextPreviousLinkAdmin.php:628
+#: includes/WPNextPreviousLinkAdmin.php:653
 msgid "Sorry, you don't have enough permission"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:246
+#: includes/WPNextPreviousLinkAdmin.php:250
 msgid "Success"
 msgstr ""
 
@@ -723,7 +731,7 @@ msgid "Support & Docs"
 msgstr ""
 
 #. %s. Core plugin's version
-#: includes/WPNextPreviousLinkAdmin.php:494
+#: includes/WPNextPreviousLinkAdmin.php:486
 #, php-format
 msgid ""
 "Thanks for installing/deactivating <strong>CBX Next Previous Article</strong>"
@@ -731,84 +739,84 @@ msgid ""
 msgstr ""
 
 #. %s. Core plugin's version
-#: includes/WPNextPreviousLinkAdmin.php:512
+#: includes/WPNextPreviousLinkAdmin.php:509
 #, php-format
 msgid ""
 "Thanks for upgrading <strong>CBX Next Previous Article</strong> V%s , enjoy "
 "the new features and bug fixes - Codeboxr Team"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:255
+#: includes/WPNextPreviousLinkAdmin.php:259
 msgid "This field is required."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:244
+#: includes/WPNextPreviousLinkAdmin.php:248
 msgid "Tip"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:1256
+#: includes/WPNextPreviousLink_Settings_API.php:1255
 msgid "Toggle All Sections"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:227
+#: includes/WPNextPreviousLinkAdmin.php:231
 msgid "toggle color picker dialog"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:167
+#: includes/Helpers/WPNextPreviousLinkHelper.php:148
 msgid "Tools"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:541
+#: includes/Helpers/WPNextPreviousLinkHelper.php:520
 msgid "Tools Settings"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:525
+#: includes/Helpers/WPNextPreviousLinkHelper.php:504
 msgid "Track Clicks"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:518
+#: includes/Helpers/WPNextPreviousLinkHelper.php:497
 msgid "Track Views"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:426
+#: includes/WPNextPreviousLinkAdmin.php:435
 msgid "Try Pro Addon"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:440
+#: includes/Helpers/WPNextPreviousLinkHelper.php:419
 msgid "Type of the image or content for next prev style"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:487
-#: includes/WPNextPreviousLinkHelper.php:617
+#: includes/WPNextPreviousLink_Settings_API.php:485
+#: includes/Helpers/WPNextPreviousLinkHelper.php:592
 msgid "Uncheck All"
 msgstr ""
 
-#: includes/class-wpnextpreviouslink-setting.php:70
-#: includes/WPNextPreviousLink.php:97
+#: includes/WPNextPreviousLink.php:92
+#: includes/WPNextPreviousLink_Settings_API.php:66
 msgid "Unserializing instances of this class is forbidden."
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:276
+#: includes/WPNextPreviousLinkAdmin.php:280
 msgid "Upload"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:229
+#: includes/WPNextPreviousLinkAdmin.php:233
 msgid "use previous color"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:266
+#: includes/Helpers/WPNextPreviousLinkHelper.php:245
 msgid "Vertical Position"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:267
+#: includes/Helpers/WPNextPreviousLinkHelper.php:246
 msgid "Vertical position of arrow or thumb"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:282
+#: includes/Helpers/WPNextPreviousLinkHelper.php:261
 msgid "Vertical Position Type"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:283
+#: includes/Helpers/WPNextPreviousLinkHelper.php:262
 msgid "Vertical position type px or %"
 msgstr ""
 
@@ -816,20 +824,20 @@ msgstr ""
 msgid "WordPress Next Previous Article/Link"
 msgstr ""
 
-#: includes/WPNextPreviousLinkAdmin.php:220
-#: includes/WPNextPreviousLinkHelper.php:321
-#: includes/WPNextPreviousLinkHelper.php:332
-#: includes/WPNextPreviousLinkHelper.php:343
-#: includes/WPNextPreviousLinkHelper.php:354
-#: includes/WPNextPreviousLinkHelper.php:365
-#: includes/WPNextPreviousLinkHelper.php:376
-#: includes/WPNextPreviousLinkHelper.php:387
-#: includes/WPNextPreviousLinkHelper.php:398
-#: includes/WPNextPreviousLinkHelper.php:434
-#: includes/WPNextPreviousLinkHelper.php:551
+#: includes/WPNextPreviousLinkAdmin.php:224
+#: includes/Helpers/WPNextPreviousLinkHelper.php:300
+#: includes/Helpers/WPNextPreviousLinkHelper.php:311
+#: includes/Helpers/WPNextPreviousLinkHelper.php:322
+#: includes/Helpers/WPNextPreviousLinkHelper.php:333
+#: includes/Helpers/WPNextPreviousLinkHelper.php:344
+#: includes/Helpers/WPNextPreviousLinkHelper.php:355
+#: includes/Helpers/WPNextPreviousLinkHelper.php:366
+#: includes/Helpers/WPNextPreviousLinkHelper.php:377
+#: includes/Helpers/WPNextPreviousLinkHelper.php:413
+#: includes/Helpers/WPNextPreviousLinkHelper.php:530
 msgid "Yes"
 msgstr ""
 
-#: includes/WPNextPreviousLinkHelper.php:274
+#: includes/Helpers/WPNextPreviousLinkHelper.php:253
 msgid "Z Index"
 msgstr ""

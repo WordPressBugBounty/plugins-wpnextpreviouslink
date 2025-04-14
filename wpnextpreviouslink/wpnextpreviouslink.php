@@ -8,7 +8,7 @@
  * Plugin Name:       CBX Next Previous Article
  * Plugin URI:        https://codeboxr.com/product/show-next-previous-article-for-wordpress
  * Description:       WordPress Next Previous Article/Link
- * Version:           2.7.4
+ * Version:           2.7.5
  * Author:            Codeboxr Team
  * Author URI:        https://codeboxr.com
  * License:           GPL-2.0+
@@ -23,12 +23,16 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-defined( 'WPNEXTPREVIOUSLINK_VERSION' ) or define( 'WPNEXTPREVIOUSLINK_VERSION', '2.7.4' );
+defined( 'WPNEXTPREVIOUSLINK_VERSION' ) or define( 'WPNEXTPREVIOUSLINK_VERSION', '2.7.5' );
 defined( 'WPNEXTPREVIOUSLINK_PLUGIN_NAME' ) or define( 'WPNEXTPREVIOUSLINK_PLUGIN_NAME', 'wpnextpreviouslink' );
 defined( 'WPNEXTPREVIOUSLINK_ROOT_PATH' ) or define( 'WPNEXTPREVIOUSLINK_ROOT_PATH', plugin_dir_path( __FILE__ ) );
 defined( 'WPNEXTPREVIOUSLINK_ROOT_URL' ) or define( 'WPNEXTPREVIOUSLINK_ROOT_URL', plugin_dir_url( __FILE__ ) );
 defined( 'WPNEXTPREVIOUSLINK_BASE_NAME' ) or define( 'WPNEXTPREVIOUSLINK_BASE_NAME', plugin_basename( __FILE__ ) );
 
+// Include the main class
+if ( ! class_exists( 'WPNextPreviousLink', false ) ) {
+	include_once WPNEXTPREVIOUSLINK_ROOT_PATH . 'includes/WPNextPreviousLink.php';
+}
 
 /**
  * The code that runs during plugin activation.
@@ -51,12 +55,20 @@ function deactivate_wpnextpreviouslink() {
 register_activation_hook( __FILE__, 'activate_wpnextpreviouslink' );
 register_deactivation_hook( __FILE__, 'deactivate_wpnextpreviouslink' );
 
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
-require plugin_dir_path( __FILE__ ) . 'includes/WPNextPreviousLink.php';
 
+/**
+ * Manually init the plugin
+ *
+ * @return WPNextPreviouslink|null
+ */
+function wpnextpreviouslink_core() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
+	global $wpnextpreviouslink_core;
+	if ( ! isset( $wpnextpreviouslink_core ) ) {
+		$wpnextpreviouslink_core = run_wpnextpreviouslink_pro();
+	}
+
+	return $wpnextpreviouslink_core;
+}//end method wpnextpreviouslink_core
 
 /**
  * Begins execution of the plugin.

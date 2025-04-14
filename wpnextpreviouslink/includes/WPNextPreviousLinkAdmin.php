@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -124,9 +123,9 @@ class WPNextPreviousLinkAdmin {
 		$js_url_part      = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/js/';
 		$vendors_url_part = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/vendors/';
 
-		$css_path_part     = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/css/';
-		$js_path_part      = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/js/';
-		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/vendors/';
+		$css_path_part     = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/css/';
+		$js_path_part      = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/js/';
+		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/vendors/';
 
 		$suffix       = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -180,9 +179,9 @@ class WPNextPreviousLinkAdmin {
 		$js_url_part      = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/js/';
 		$vendors_url_part = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/vendors/';
 
-		$css_path_part     = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/css/';
-		$js_path_part      = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/js/';
-		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_PATH . 'assets/vendors/';
+		$css_path_part     = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/css/';
+		$js_path_part      = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/js/';
+		$vendors_path_part = WPNEXTPREVIOUSLINK_ROOT_URL . 'assets/vendors/';
 
 		$suffix       = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -275,7 +274,7 @@ class WPNextPreviousLinkAdmin {
 				'recaptcha'   => esc_html__( 'Please check the captcha.', 'wpnextpreviouslink' ),
 			],
 			'lang'                     => get_user_locale(),
-			'image_url'                => plugins_url( 'assets/images/', dirname( __FILE__ ) ),
+			'image_url'                => WPNEXTPREVIOUSLINK_ROOT_URL. 'assets/images/',
 			'please_select'            => esc_html__( 'Please Select', 'wpnextpreviouslink' ),
 			//'upload_title'  => esc_html__( 'Select Media File', 'wpnextpreviouslink' ),
 			'upload_btn'               => esc_html__( 'Upload', 'wpnextpreviouslink' ),
@@ -368,11 +367,10 @@ class WPNextPreviousLinkAdmin {
 		return WPNextPreviousLinkHelper::wpnextprevios_image_type();
 	}//end get_wpnextprevios_image_type
 
-
 	/**
 	 * Set settings fields
 	 *
-	 * @return type array
+	 * @return mixed|null
 	 */
 	public function get_settings_sections() {
 		return WPNextPreviousLinkHelper::get_settings_sections();
@@ -454,25 +452,8 @@ class WPNextPreviousLinkAdmin {
 			],
 			$links
 		);
-
 	}//end of function add_action_links
 
-	/**
-	 * If we need to do something in upgrader process is completed
-	 *
-	 * @param $upgrader_object
-	 * @param $options
-	 */
-	/*public function plugin_upgrader_process_complete( $upgrader_object, $options ) {
-		if ( isset( $options['plugins'] ) && $options['action'] == 'update' && $options['type'] == 'plugin' ) {
-			foreach ( $options['plugins'] as $each_plugin ) {
-				if ( $each_plugin == WPNEXTPREVIOUSLINK_BASE_NAME ) {
-					set_transient( 'wpnextpreviouslink_upgraded_notice', 1 );
-					break;
-				}
-			}
-		}
-	}//end plugin_upgrader_process_complete*/
 
 	/**
 	 * If we need to do something in upgrader process is completed
@@ -594,31 +575,21 @@ class WPNextPreviousLinkAdmin {
 			return;
 		}
 
+		//if pro addon is active then ignore this notification from core
+		if(defined('WPNEXTPREVIOUSLINKADDON_VERSION')) return;
 
 
 		$pro_addon_version = WPNextPreviousLinkHelper::get_any_plugin_version( 'wpnextpreviouslinkaddon/wpnextpreviouslinkaddon.php' );
-		$compared_version = '2.0.8';
-		$need_update        = false;
-
-		if ( defined( 'WPNEXTPREVIOUSLINKADDON_VERSION' ) ) {
-			//of pro addon is too old and doesn't have the update checker implemented
-			if(version_compare( $pro_addon_version, '2.0.7', '<' )){
-				$compared_version = '2.0.7';
-				$need_update = true;
-			}
-		}
-		else{
-			if ( $pro_addon_version != '' && version_compare( $pro_addon_version, $compared_version, '<' ) ) {
-				$need_update = true;
-			}
-		}
+		$pro_latest_version  = '2.0.9'; //we manually set this as we know our pro addon version
 
 
-		if ( $need_update) {
+		if ( $pro_addon_version != '' && version_compare( $pro_addon_version, $pro_latest_version, '<' ) ) {
+
+
 			$plugin_manual_update = 'https://codeboxr.com/manual-update-pro-addon/';
 
 			/* translators:translators: %s: plugin setting url for licence */
-			$custom_message = wp_kses( sprintf( __( '<strong>Note:</strong> CBX Next Previous Article Pro Addon is custom plugin. This plugin can not be auto update from dashboard/plugin manager. For manual update please check <a target="_blank" href="%1$s">documentation</a>. <strong style="color: red;">It seems this plugin\'s current version is older than %2$s . To get the latest pro addon features, this plugin needs to upgrade to %2$s or later.</strong>', 'wpnextpreviouslink' ), esc_url( $plugin_manual_update ), $compared_version ), [
+			$custom_message = wp_kses( sprintf( __( '<strong>Note:</strong> CBX Next Previous Article Pro Addon is custom plugin. This plugin can not be auto update from dashboard/plugin manager. For manual update please check <a target="_blank" href="%1$s">documentation</a>. <strong style="color: red;">It seems this plugin\'s current version is older than %2$s . To get the latest pro addon features, this plugin needs to upgrade to %2$s or later.</strong>', 'wpnextpreviouslink' ), esc_url( $plugin_manual_update ), $pro_latest_version ), [
 				'strong' => [ 'style' => [] ],
 				'a'      => [
 					'href'   => [],
@@ -635,6 +606,7 @@ class WPNextPreviousLinkAdmin {
             </td>
           </tr>';
 		}
+
 	}//end method custom_message_after_plugin_row_proaddon
 
 	/**
