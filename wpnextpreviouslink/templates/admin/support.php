@@ -89,6 +89,14 @@ $doc_url    = WPNextPreviousLinkHelper::url_utmy( 'https://codeboxr.com/doc/wpne
                     <div class="content">
                         <div class="cbx-backend-settings-row">
                             <p>
+                                Version - 2.7.6
+                            </p>
+                            <ul>
+                                <li>[updated] Style improve for setting page</li>
+                            </ul>
+                        </div>
+                        <div class="cbx-backend-settings-row">
+                            <p>
                                 Version - 2.7.5
                             </p>
                             <ul>

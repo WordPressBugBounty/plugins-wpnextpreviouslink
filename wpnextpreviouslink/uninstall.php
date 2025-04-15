@@ -34,7 +34,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * The code that runs during plugin uninstall.
  */
 function uninstall_wpnextpreviouslink() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpnextpreviouslink-setting.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/WPNextPreviousLink_Settings_API.php';
 	require_once plugin_dir_path( __FILE__ ) . 'includes/Helpers/WPNextPreviousLinkHelper.php';
 	require_once plugin_dir_path( __FILE__ ) . 'includes/WPNextPreviousLinkUninstall.php';
 

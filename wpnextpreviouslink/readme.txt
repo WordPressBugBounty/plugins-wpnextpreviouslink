@@ -3,7 +3,7 @@ Contributors: codeboxr,manchumahara
 Tags: next prev,navigation,
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 2.7.5
+Stable tag: 2.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,9 @@ e.g.
 
 
 == Changelog ==
+= 2.7.6 =
+* [updated] Style improve for setting page
+
 = 2.7.5 =
 * [updated] Code revamped
 * [updated] Compatible with WordPress 6.8
